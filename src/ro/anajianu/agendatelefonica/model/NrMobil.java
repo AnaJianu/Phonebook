@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ro.anajianu.agendatelefonica.model;
 
-/**
- *
- * @author ana
- */
 public class NrMobil extends NrTelefon {
     
     
@@ -24,7 +15,7 @@ public class NrMobil extends NrTelefon {
 
     @Override
     public String toString() {
-        return "NrMobil="+ getNrTelefon(); //To change body of generated methods, choose Tools | Templates.
+        return "NrMobil="+ getNrTelefon(); 
     }
     
 }

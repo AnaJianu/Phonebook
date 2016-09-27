@@ -1,14 +1,9 @@
 package ro.anajianu.agendatelefonica.model;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- *
- * @author ana
- */
 public class AbonatTest {
     
     NrTelefon nrTelefon;
