@@ -5,9 +5,9 @@
  */
 package ro.anajianu.agendatelefonica.model;
 
-import org.junit.Assert;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -16,15 +16,21 @@ import org.junit.Test;
  */
 public class CarteDeTelefonTest {
     
-    CarteDeTelefon agenda = new CarteDeTelefon();
-    NrTelefon nrTelefon= new NrMobil("0765789789");
-    Abonat abonat = new Abonat("Ion", "Popescu", nrTelefon, "2920298350013");
+    private CarteDeTelefon agenda;
+    private Abonat abonat;
+    private NrTelefon nrTelefon;
+    
+    @Before
+    public void setUp() {
+        agenda = new CarteDeTelefon();
+        nrTelefon = new NrMobil("0765789789");
+        abonat = new Abonat("Ion", "Popescu", nrTelefon, "2920298350013");
+    }
     
     @Test
     public void testAdaugaAbonat() {
         agenda.adaugareAbonat(abonat);
         assertTrue(agenda.contineAbonat(abonat));
-        
     }
     
     @Test 
