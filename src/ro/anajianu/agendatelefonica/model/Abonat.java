@@ -53,6 +53,7 @@ public class Abonat {
         this.nrTelefon = nrTelefon;
     }
     
+    @Override
     public String toString() {
         return "Abonat{nume="+ nume+", prenume="+prenume+", nrTelefon="+nrTelefon+", CNP="+CNP+"}";
     }

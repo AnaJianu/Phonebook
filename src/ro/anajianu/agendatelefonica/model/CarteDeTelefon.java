@@ -26,8 +26,24 @@ public class CarteDeTelefon {
         abonati.remove(a);
     }
     
-    public void modificareAbonat(Abonat a) {
-//        abonati.
+    public void modificareAbonat(Abonat abonatVechi, Abonat abonatNou) {
+        if (abonati.contains(abonatVechi)) {
+            abonati.remove(abonatVechi);
+            abonati.add(abonatNou);
+        }
+                
     }
+    
+    public boolean contineAbonat(Abonat a) {
+        return abonati.contains(a);
+    }
+
+    @Override
+    public String toString() {
+        return abonati.toString();
+    }
+    
+    
+    
     
 }

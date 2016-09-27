@@ -23,7 +23,7 @@ public class NrFix extends NrTelefon {
 
     @Override
     public String toString() {
-        return "NrFix="+super.getNrTelefon();
+        return "NrFix="+getNrTelefon();
     }
     
     

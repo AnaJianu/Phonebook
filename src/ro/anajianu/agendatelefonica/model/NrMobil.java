@@ -24,7 +24,7 @@ public class NrMobil extends NrTelefon {
 
     @Override
     public String toString() {
-        return "NrMobil="+ super.getNrTelefon(); //To change body of generated methods, choose Tools | Templates.
+        return "NrMobil="+ getNrTelefon(); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
