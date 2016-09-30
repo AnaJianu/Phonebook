@@ -5,6 +5,7 @@
  */
 package ro.anajianu.agendatelefonica.view;
 
+import java.awt.GridLayout;
 import javax.swing.JPanel;
 
 /**
@@ -12,8 +13,8 @@ import javax.swing.JPanel;
  * @author ana
  */
 public class PanouPrincipal extends JPanel{
-    private PanouStanga panouStanga;
-    private PanouDreapta panouDreapta;
+    private final PanouStanga panouStanga;
+    private final PanouDreapta panouDreapta;
     
     public PanouPrincipal() {
         panouStanga=new PanouStanga();
@@ -22,6 +23,7 @@ public class PanouPrincipal extends JPanel{
     }
 
     private void initializare() {
+        setLayout(new GridLayout(1, 2));
         add(panouStanga);
         add(panouDreapta);
     }

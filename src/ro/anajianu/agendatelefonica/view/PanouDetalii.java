@@ -5,6 +5,8 @@
  */
 package ro.anajianu.agendatelefonica.view;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -15,17 +17,17 @@ import javax.swing.JTextField;
  */
 public class PanouDetalii extends JPanel {
     private JLabel pozaAbonat;
-    private JLabel numeAbonat;
-    private JLabel prenumeAbonat;
+    private JTextField numeAbonat;
+    private JTextField prenumeAbonat;
     private JLabel telefonAbonatEticheta;
     private JTextField telefonAbonatValoare;
     private JLabel cnpAbonatEticheta;
     private JTextField cnpAbonatValoare;
     
     public PanouDetalii() {
-        pozaAbonat=new JLabel();
-        numeAbonat=new JLabel();
-        prenumeAbonat=new JLabel();
+        pozaAbonat=new JLabel("Poza");
+        numeAbonat=new JTextField();
+        prenumeAbonat=new JTextField();
         telefonAbonatEticheta=new JLabel("Telefon:");
         telefonAbonatValoare=new JTextField();
         cnpAbonatEticheta=new JLabel("CNP:");
@@ -34,13 +36,36 @@ public class PanouDetalii extends JPanel {
     }
 
     private void initializare() {
-        add(pozaAbonat);
-        add(numeAbonat);
-        add(prenumeAbonat);
-        add(telefonAbonatEticheta);
-        add(telefonAbonatValoare);
-        add(cnpAbonatEticheta);
-        add(cnpAbonatValoare);
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc=new GridBagConstraints();
+        
+        gbc.gridx=0;
+        gbc.gridy=0;
+        add(pozaAbonat, gbc);
+        
+        gbc.gridx=1;
+        gbc.gridy=0;
+        add(numeAbonat,gbc);
+        
+        gbc.gridx=2;
+        gbc.gridy=0;
+        add(prenumeAbonat,gbc);
+        
+        gbc.gridx=0;
+        gbc.gridy=1;
+        add(telefonAbonatEticheta,gbc);
+        
+        gbc.gridx=1;
+        gbc.gridy=1;
+        add(telefonAbonatValoare,gbc);
+        
+        gbc.gridx=0;
+        gbc.gridy=2;
+        add(cnpAbonatEticheta,gbc);
+        
+        gbc.gridx=1;
+        gbc.gridy=2;
+        add(cnpAbonatValoare,gbc);
     }
     
     

@@ -5,6 +5,7 @@
  */
 package ro.anajianu.agendatelefonica.view;
 
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -14,12 +15,12 @@ import javax.swing.JPanel;
  */
 public class PanouButoane extends JPanel {
 
-    private JButton butonAdaugare;
-    private JButton butonStergere;
-    private JButton butonModificare;
-    private JButton butonSortare;
-    private JButton butonCautare;
-    private JButton butonIesire;
+    private final JButton butonAdaugare;
+    private final JButton butonStergere;
+    private final JButton butonModificare;
+    private final JButton butonSortare;
+    private final JButton butonCautare;
+    private final JButton butonIesire;
 
     public PanouButoane() {
         butonAdaugare = new JButton("Adaugare");
@@ -31,13 +32,16 @@ public class PanouButoane extends JPanel {
         initializare();
     }
     
-    public void initializare() {
+    private void initializare() {
         add(butonAdaugare);
         add(butonStergere);
         add(butonModificare);
         add(butonSortare);
         add(butonCautare);
         add(butonIesire);
+        
+        setLayout(new GridLayout(3, 2));
+        
     }
 
 }

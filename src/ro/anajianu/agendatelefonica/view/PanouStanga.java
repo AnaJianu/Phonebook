@@ -6,6 +6,7 @@
 package ro.anajianu.agendatelefonica.view;
 
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -26,6 +27,7 @@ public class PanouStanga extends JPanel{
     
     public void initializare() {
         setSize(new Dimension(500, 900));
+        setLayout(new GridLayout(2, 1));
         add(campCautare);
         add(tabelAbonati);
     }
