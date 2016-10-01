@@ -6,6 +6,8 @@
 package ro.anajianu.agendatelefonica.view;
 
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,9 +53,18 @@ public class PanouStanga extends JPanel {
 
     private void initializare() {
         setSize(new Dimension(500, 900));
-        setLayout(new GridLayout(2, 1));
-        add(campCautare);
-        add(scrollPane);
+        setLayout(new GridBagLayout());
+        GridBagConstraints c=new GridBagConstraints();
+        c.gridx=0;
+        c.gridy=0;
+        c.fill=GridBagConstraints.HORIZONTAL;
+        add(campCautare,c);
+        c.gridx=0;
+        c.gridy=1;
+        c.weighty=1;
+        c.fill=GridBagConstraints.VERTICAL;
+        scrollPane.setMinimumSize(new Dimension(500, 900));
+        add(scrollPane,c);
     }
 
 }
