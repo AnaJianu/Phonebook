@@ -15,7 +15,7 @@ public class NrFix extends NrTelefon {
 
     @Override
     public String toString() {
-        return "NrFix="+getNrTelefon();
+        return getNrTelefon();
     }
     
     

@@ -17,7 +17,7 @@ public abstract class NrTelefon {
     
     @Override
     public String toString() {
-        return "NrTelefon="+nrTelefon;
+        return nrTelefon;
     }
    
 }

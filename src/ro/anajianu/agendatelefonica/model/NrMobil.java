@@ -15,7 +15,7 @@ public class NrMobil extends NrTelefon {
 
     @Override
     public String toString() {
-        return "NrMobil="+ getNrTelefon(); 
+        return getNrTelefon(); 
     }
     
 }

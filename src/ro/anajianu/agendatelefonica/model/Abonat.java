@@ -1,17 +1,28 @@
 package ro.anajianu.agendatelefonica.model;
 
 public class Abonat {
+    private String numar;
     private String nume;
     private String prenume;
     private String CNP;
     private NrTelefon nrTelefon;
     
-    public Abonat (String nume, String prenume,NrTelefon nrTelefon, String CNP) {
+    public Abonat (String numar, String nume, String prenume,NrTelefon nrTelefon, String CNP) {
+        this.numar=numar;
         this.nume=nume;
         this.prenume=prenume;
         this.nrTelefon=nrTelefon;
         this.CNP=CNP;
     }
+
+    public String getNumar() {
+        return numar;
+    }
+
+    public void setNumar(String numar) {
+        this.numar = numar;
+    }
+    
     public String getNume() {
         return nume;
     }
