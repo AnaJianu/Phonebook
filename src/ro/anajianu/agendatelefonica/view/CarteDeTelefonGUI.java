@@ -7,7 +7,7 @@ public class CarteDeTelefonGUI {
 
     private final JFrame cadru;
     private final PanouPrincipal panouPrincipal;
-    private BaraMeniuri baraMeniuri;
+    private final BaraMeniuri baraMeniuri;
 
     public CarteDeTelefonGUI() {
 
@@ -22,8 +22,5 @@ public class CarteDeTelefonGUI {
         cadru.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        CarteDeTelefonGUI carteDeTelefonGUI = new CarteDeTelefonGUI();
-    }
 
 }

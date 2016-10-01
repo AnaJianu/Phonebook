@@ -30,8 +30,8 @@ public class PanouDetalii extends JPanel {
     public PanouDetalii() {
         iconAbonat = new ImageIcon("resources/emptyPhoto.png");
         pozaAbonat = new JLabel(iconAbonat);
-        numeAbonat = new JTextField();
-        prenumeAbonat = new JTextField();
+        numeAbonat = new JTextField("Nume");
+        prenumeAbonat = new JTextField("Prenume");
         telefonAbonatEticheta = new JLabel("Telefon:");
         telefonAbonatValoare = new JTextField();
         cnpAbonatEticheta = new JLabel("CNP:");
