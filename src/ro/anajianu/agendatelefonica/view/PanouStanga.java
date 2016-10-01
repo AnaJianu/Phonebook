@@ -30,7 +30,7 @@ public class PanouStanga extends JPanel {
     private final JTable tabelAbonati;
 
     public PanouStanga() {
-        campCautare = new JTextField("Cautare");
+        campCautare = new JTextField("Cautare...");
         tabelAbonati = new JTable();
         scrollPane = new JScrollPane(tabelAbonati);
         creareAbonati();
@@ -58,6 +58,7 @@ public class PanouStanga extends JPanel {
         c.gridx=0;
         c.gridy=0;
         c.fill=GridBagConstraints.HORIZONTAL;
+        campCautare.setHorizontalAlignment(JTextField.CENTER);
         add(campCautare,c);
         c.gridx=0;
         c.gridy=1;
