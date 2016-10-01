@@ -12,11 +12,13 @@ public class CarteDeTelefonGUI {
     public CarteDeTelefonGUI() {
 
         panouPrincipal = new PanouPrincipal();
+        baraMeniuri=new BaraMeniuri();
         cadru = new JFrame("Agenda Telefonica");
+        cadru.setJMenuBar(baraMeniuri);
         cadru.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         cadru.setSize(new Dimension(1000, 1000));
         cadru.getContentPane().add(panouPrincipal);
-        cadru.setJMenuBar(baraMeniuri);
+
         cadru.setVisible(true);
     }
 

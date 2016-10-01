@@ -17,54 +17,56 @@ import javax.swing.JSeparator;
 public class BaraMeniuri extends JMenuBar {
 
     private final JMenu meniuFisier;
-    private final JMenuItem meniuDeschide;
-    private final JMenuItem meniuSalvare;
+    private final JMenuItem submeniuDeschide;
+    private final JMenuItem submeniuSalvare;
     private final JSeparator separatorMeniu;
-    private final JMenuItem meniuIesire;
+    private final JMenuItem submeniuIesire;
 
     private final JMenu meniuAbonati;
-    private final JMenuItem meniuAdaugaAbonat;
-    private final JMenuItem meniuCautaAbonat;
-    private final JMenuItem meniuStergeAbonat;
-    private final JMenuItem meniuModificaAbonat;
-    
+    private final JMenuItem submeniuAdaugaAbonat;
+    private final JMenuItem submeniuCautaAbonat;
+    private final JMenuItem submeniuStergeAbonat;
+    private final JMenuItem submeniuModificaAbonat;
+
     private final JMenu meniuAjutor;
-    private final JMenuItem meniuInregistrare;
-    private final JMenuItem meniuDespre;
+    private final JMenuItem submeniuInregistrare;
+    private final JMenuItem submeniuDespre;
 
     public BaraMeniuri() {
-        meniuFisier = new JMenu();
-        meniuAbonati = new JMenu();
-        meniuAjutor = new JMenu();
-        meniuDeschide = new JMenuItem();
-        meniuSalvare = new JMenuItem();
+        meniuFisier = new JMenu("Fisier");
+        submeniuDeschide = new JMenuItem("Deschide");
+        submeniuSalvare = new JMenuItem("Salvare");
         separatorMeniu = new JSeparator();
-        meniuIesire = new JMenuItem();
-        meniuAdaugaAbonat = new JMenuItem();
-        meniuCautaAbonat = new JMenuItem();
-        meniuStergeAbonat = new JMenuItem();
-        meniuModificaAbonat = new JMenuItem();
-        meniuInregistrare = new JMenuItem();
-        meniuDespre = new JMenuItem();
+        submeniuIesire = new JMenuItem("Iesire");
+
+        meniuAbonati = new JMenu("Abonati");
+        submeniuAdaugaAbonat = new JMenuItem("Adauga");
+        submeniuCautaAbonat = new JMenuItem("Cauta");
+        submeniuStergeAbonat = new JMenuItem("Sterge");
+        submeniuModificaAbonat = new JMenuItem("Modifica");
+
+        meniuAjutor = new JMenu("Ajutor");
+        submeniuInregistrare = new JMenuItem("Inregistrare");
+        submeniuDespre = new JMenuItem("Despre");
         initializare();
     }
 
     private void initializare() {
-        meniuFisier.add(meniuDeschide);
-        meniuFisier.add(meniuSalvare);
+        meniuFisier.add(submeniuDeschide);
+        meniuFisier.add(submeniuSalvare);
         meniuFisier.add(separatorMeniu);
-        meniuFisier.add(meniuIesire);
+        meniuFisier.add(submeniuIesire);
         add(meniuFisier);
-        
-        meniuAbonati.add(meniuAdaugaAbonat);
-        meniuAbonati.add(meniuCautaAbonat);
-        meniuAbonati.add(meniuStergeAbonat);
-        meniuAbonati.add(meniuModificaAbonat);
+
+        meniuAbonati.add(submeniuAdaugaAbonat);
+        meniuAbonati.add(submeniuCautaAbonat);
+        meniuAbonati.add(submeniuStergeAbonat);
+        meniuAbonati.add(submeniuModificaAbonat);
         add(meniuAbonati);
-        
-        meniuAjutor.add(meniuInregistrare);
-        meniuAjutor.add(meniuDespre);
+
+        meniuAjutor.add(submeniuInregistrare);
+        meniuAjutor.add(submeniuDespre);
         add(meniuAjutor);
-        
+
     }
 }
