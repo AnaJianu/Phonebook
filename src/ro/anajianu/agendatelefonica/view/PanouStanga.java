@@ -11,6 +11,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -30,7 +31,6 @@ public class PanouStanga extends JPanel {
     private final JTable tabelAbonati;
     private ModelTabel modelTabel;
     private List<Abonat> listaProbaAbonati;
-    
 
     public PanouStanga() {
         campCautare = new JTextField("Cautare...");
@@ -50,25 +50,25 @@ public class PanouStanga extends JPanel {
         listaProbaAbonati.add(a2);
         listaProbaAbonati.add(a3);
 
-        modelTabel=new ModelTabel(listaProbaAbonati);
+        modelTabel = new ModelTabel(listaProbaAbonati);
         tabelAbonati.setModel(modelTabel);
     }
 
     private void initializare() {
         setSize(new Dimension(500, 900));
         setLayout(new GridBagLayout());
-        GridBagConstraints c=new GridBagConstraints();
-        c.gridx=0;
-        c.gridy=0;
-        c.fill=GridBagConstraints.HORIZONTAL;
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+        c.fill = GridBagConstraints.HORIZONTAL;
         campCautare.setHorizontalAlignment(JTextField.CENTER);
-        add(campCautare,c);
-        c.gridx=0;
-        c.gridy=1;
-        c.weighty=1;
-        c.fill=GridBagConstraints.VERTICAL;
+        add(campCautare, c);
+        c.gridx = 0;
+        c.gridy = 1;
+        c.weighty = 1;
+        c.fill = GridBagConstraints.VERTICAL;
         scrollPane.setMinimumSize(new Dimension(500, 900));
-        add(scrollPane,c);
+        add(scrollPane, c);
     }
 
     void adaugaAbonatInTabel(Abonat abonatNou) {
@@ -78,8 +78,19 @@ public class PanouStanga extends JPanel {
 
     void stergeAbonatDinTabel() {
         int randSelectat = tabelAbonati.getSelectedRow();
-        listaProbaAbonati.remove(randSelectat);
-        modelTabel.notificareStergereAbonat();
+        if (randSelectat == -1) {
+            notificaUtilizatorul();
+        } else {
+            listaProbaAbonati.remove(randSelectat);
+            modelTabel.notificareStergereAbonat();
+        }
+
+    }
+
+    private void notificaUtilizatorul() {
+        JOptionPane.showMessageDialog(null, "Va rugam selectati un abonat!", 
+                "Stergere abonat din tabel", 
+                JOptionPane.OK_OPTION);
     }
 
 }
