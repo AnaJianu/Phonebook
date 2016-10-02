@@ -22,7 +22,6 @@ public class PanouButoane extends JPanel {
     private final JButton butonAdaugare;
     private final JButton butonStergere;
     private final JButton butonModificare;
-    private final JButton butonSortare;
     private final JButton butonCautare;
     private final JButton butonIesire;
     private CarteDeTelefonController controller;
@@ -33,9 +32,7 @@ public class PanouButoane extends JPanel {
 
         butonAdaugare = new JButton("Adaugare");
         butonStergere = new JButton("Stergere");
-
         butonModificare = new JButton("Modificare");
-        butonSortare = new JButton("Sortare");
         butonCautare = new JButton("Cautare");
         butonIesire = new JButton("Iesire");
         initializare();
@@ -49,7 +46,6 @@ public class PanouButoane extends JPanel {
         add(butonAdaugare);
         add(butonStergere);
         add(butonModificare);
-        add(butonSortare);
         add(butonCautare);
         add(butonIesire);
 

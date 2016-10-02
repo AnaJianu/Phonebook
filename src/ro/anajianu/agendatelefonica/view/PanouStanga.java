@@ -8,7 +8,6 @@ package ro.anajianu.agendatelefonica.view;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -52,6 +51,7 @@ public class PanouStanga extends JPanel {
 
         modelTabel = new ModelTabel(listaProbaAbonati);
         tabelAbonati.setModel(modelTabel);
+        tabelAbonati.setAutoCreateRowSorter(true);
     }
 
     private void initializare() {
