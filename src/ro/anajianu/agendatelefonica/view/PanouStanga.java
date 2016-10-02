@@ -28,6 +28,9 @@ public class PanouStanga extends JPanel {
     private final JTextField campCautare;
     private final JScrollPane scrollPane;
     private final JTable tabelAbonati;
+    private ModelTabel modelTabel;
+    private List<Abonat> listaProbaAbonati;
+    
 
     public PanouStanga() {
         campCautare = new JTextField("Cautare...");
@@ -38,7 +41,7 @@ public class PanouStanga extends JPanel {
     }
 
     private void creareAbonati() {
-        List<Abonat> listaProbaAbonati = new ArrayList<>();
+        listaProbaAbonati = new ArrayList<>();
         NrMobil telefon = new NrMobil("0756798889");
         Abonat a1 = new Abonat("0", "Popescu", "Ion", telefon, "190032850028");
         Abonat a2 = new Abonat("1", "Dumitru", "Andra", telefon, "291090340028");
@@ -47,7 +50,7 @@ public class PanouStanga extends JPanel {
         listaProbaAbonati.add(a2);
         listaProbaAbonati.add(a3);
 
-        ModelTabel modelTabel = new ModelTabel(listaProbaAbonati);
+        modelTabel=new ModelTabel(listaProbaAbonati);
         tabelAbonati.setModel(modelTabel);
     }
 
@@ -66,6 +69,12 @@ public class PanouStanga extends JPanel {
         c.fill=GridBagConstraints.VERTICAL;
         scrollPane.setMinimumSize(new Dimension(500, 900));
         add(scrollPane,c);
+    }
+
+    void adaugaAbonatInTabel(Abonat abonatNou) {
+        listaProbaAbonati.add(abonatNou);
+        System.out.println(listaProbaAbonati);
+        modelTabel.notificareAdaugareAbonat();
     }
 
 }

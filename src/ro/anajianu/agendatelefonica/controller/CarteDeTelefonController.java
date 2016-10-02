@@ -21,4 +21,8 @@ public class CarteDeTelefonController {
         viewCarte.stergeCampuriDetaliiAbonat();
     }
 
+    public void adaugaAbonat() {
+        viewCarte.adaugaAbonatDinView();
+    }
+
 }

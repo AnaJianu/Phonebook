@@ -54,6 +54,10 @@ public class ModelTabel extends AbstractTableModel{
     public String getColumnName(int column) {
         return baraColoane[column];
     }
+
+    public void notificareAdaugareAbonat() {
+        fireTableDataChanged();
+    }
     
     
     

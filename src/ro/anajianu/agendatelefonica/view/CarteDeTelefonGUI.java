@@ -3,6 +3,7 @@ package ro.anajianu.agendatelefonica.view;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
+import ro.anajianu.agendatelefonica.model.Abonat;
 
 public class CarteDeTelefonGUI {
 
@@ -25,6 +26,12 @@ public class CarteDeTelefonGUI {
 
     public void stergeCampuriDetaliiAbonat() {
         panouPrincipal.getPanouDreapta().getPanouDetalii().stergeCampuriDetaliiAbonat();
+    }
+
+    public void adaugaAbonatDinView() {
+        Abonat abonatNou=panouPrincipal.getPanouDreapta().getPanouDetalii().getAbonatDeAdaugat();
+        panouPrincipal.getPanouStanga().adaugaAbonatInTabel(abonatNou);
+        stergeCampuriDetaliiAbonat();
     }
 
 

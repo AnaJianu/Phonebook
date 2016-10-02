@@ -12,6 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
+import ro.anajianu.agendatelefonica.model.Abonat;
+import ro.anajianu.agendatelefonica.model.NrMobil;
+import ro.anajianu.agendatelefonica.model.NrTelefon;
 
 /**
  *
@@ -78,12 +81,23 @@ public class PanouDetalii extends JPanel {
         gbc.ipadx = 200;
         add(cnpAbonatValoare, gbc);
     }
-    
+
     public void stergeCampuriDetaliiAbonat() {
         numeAbonat.setText("");
         prenumeAbonat.setText("");
         telefonAbonatValoare.setText("");
         cnpAbonatValoare.setText("");
+    }
+
+    public Abonat getAbonatDeAdaugat() {
+        NrTelefon nrTelefon = new NrMobil(telefonAbonatValoare.getText());
+
+        Abonat abonatNou = new Abonat("3", numeAbonat.getText(), prenumeAbonat.getText(), nrTelefon, cnpAbonatValoare.getText());
+
+        return abonatNou;
+        
+        
+
     }
 
 }

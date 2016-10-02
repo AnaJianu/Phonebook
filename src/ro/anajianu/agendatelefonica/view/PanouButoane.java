@@ -44,6 +44,7 @@ public class PanouButoane extends JPanel {
     private void initializare() {
         initializareButonStergere();
         initializareButonIesire();
+        initializareButonAdaugare();
 
         add(butonAdaugare);
         add(butonStergere);
@@ -74,6 +75,15 @@ public class PanouButoane extends JPanel {
                 if (n==0) {
                     System.exit(0);
                 }
+            }
+        });
+    }
+    
+    private void initializareButonAdaugare() {
+        butonAdaugare.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.adaugaAbonat();
             }
         });
     }
