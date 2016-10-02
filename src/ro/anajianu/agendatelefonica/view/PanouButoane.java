@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 
@@ -25,16 +26,14 @@ public class PanouButoane extends JPanel {
     private final JButton butonCautare;
     private final JButton butonIesire;
     private CarteDeTelefonController controller;
-            
-            
 
     public PanouButoane(CarteDeTelefonController controller) {
-        
-        this.controller=controller;
-        
+
+        this.controller = controller;
+
         butonAdaugare = new JButton("Adaugare");
         butonStergere = new JButton("Stergere");
-        
+
         butonModificare = new JButton("Modificare");
         butonSortare = new JButton("Sortare");
         butonCautare = new JButton("Cautare");
@@ -44,6 +43,7 @@ public class PanouButoane extends JPanel {
 
     private void initializare() {
         initializareButonStergere();
+        initializareButonIesire();
 
         add(butonAdaugare);
         add(butonStergere);
@@ -65,7 +65,17 @@ public class PanouButoane extends JPanel {
             }
         });
     }
-    
-    
+
+    private void initializareButonIesire() {
+        butonIesire.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int n = JOptionPane.showConfirmDialog(null, "Confirmati iesirea din aplicatie?","Iesire aplicatie", JOptionPane.YES_NO_OPTION);
+                if (n==0) {
+                    System.exit(0);
+                }
+            }
+        });
+    }
 
 }
