@@ -36,4 +36,8 @@ public class PanouDreapta extends JPanel {
         return panouDetalii;
     }
 
+    public PanouButoane getPanouButoane() {
+        return panouButoane;
+    }
+
 }

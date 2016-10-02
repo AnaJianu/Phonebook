@@ -14,7 +14,7 @@ public class CarteDeTelefonGUI {
     public CarteDeTelefonGUI(CarteDeTelefonController controller) {
 
         panouPrincipal = new PanouPrincipal(controller);
-        baraMeniuri=new BaraMeniuri();
+        baraMeniuri=new BaraMeniuri(controller);
         cadru = new JFrame("Agenda Telefonica");
         cadru.setJMenuBar(baraMeniuri);
         cadru.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,6 +36,10 @@ public class CarteDeTelefonGUI {
 
     public void stergeAbonatDinTabel() {
         panouPrincipal.getPanouStanga().stergeAbonatDinTabel();
+    }
+
+    public void iesireDinAplicatie() {
+        panouPrincipal.getPanouDreapta().getPanouButoane().iesireDinAplicatie();
     }
 
 

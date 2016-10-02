@@ -5,10 +5,13 @@
  */
 package ro.anajianu.agendatelefonica.view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
+import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 
 /**
  *
@@ -31,8 +34,12 @@ public class BaraMeniuri extends JMenuBar {
     private final JMenu meniuAjutor;
     private final JMenuItem submeniuInregistrare;
     private final JMenuItem submeniuDespre;
+    
+    private final CarteDeTelefonController controller;
 
-    public BaraMeniuri() {
+    public BaraMeniuri(CarteDeTelefonController controller) {
+        this.controller=controller;
+        
         meniuFisier = new JMenu("Fisier");
         submeniuDeschide = new JMenuItem("Deschide");
         submeniuSalvare = new JMenuItem("Salvare");
@@ -49,6 +56,7 @@ public class BaraMeniuri extends JMenuBar {
         submeniuInregistrare = new JMenuItem("Inregistrare");
         submeniuDespre = new JMenuItem("Despre");
         initializare();
+        initializareSubmeniuIesire();
     }
 
     private void initializare() {
@@ -68,5 +76,14 @@ public class BaraMeniuri extends JMenuBar {
         meniuAjutor.add(submeniuDespre);
         add(meniuAjutor);
 
+    }
+    
+    private void initializareSubmeniuIesire() {
+        submeniuIesire.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.iesireDinAplicatie();
+            }
+        });
     }
 }

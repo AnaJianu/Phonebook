@@ -67,14 +67,17 @@ public class PanouButoane extends JPanel {
         butonIesire.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int n = JOptionPane.showConfirmDialog(null, "Confirmati iesirea din aplicatie?","Iesire aplicatie", JOptionPane.YES_NO_OPTION);
-                if (n==0) {
-                    System.exit(0);
-                }
+                iesireDinAplicatie();
             }
         });
     }
     
+    public void iesireDinAplicatie() {
+        int n = JOptionPane.showConfirmDialog(null, "Confirmati iesirea din aplicatie?","Iesire aplicatie", JOptionPane.YES_NO_OPTION);
+                if (n==0) {
+                    System.exit(0);
+                }
+    }
     private void initializareButonAdaugare() {
         butonAdaugare.addActionListener(new ActionListener() {
             @Override

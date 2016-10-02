@@ -28,4 +28,8 @@ public class CarteDeTelefonController {
         viewCarte.adaugaAbonatDinView();
     }
 
+    public void iesireDinAplicatie() {
+        viewCarte.iesireDinAplicatie();
+    }
+
 }
