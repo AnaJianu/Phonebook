@@ -8,6 +8,8 @@ package ro.anajianu.agendatelefonica.view;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -15,6 +17,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.TableRowSorter;
 import ro.anajianu.agendatelefonica.model.Abonat;
 import ro.anajianu.agendatelefonica.model.ModelTabel;
 import ro.anajianu.agendatelefonica.model.NrMobil;
@@ -29,14 +35,17 @@ public class PanouStanga extends JPanel {
     private final JScrollPane scrollPane;
     private final JTable tabelAbonati;
     private ModelTabel modelTabel;
+    private TableRowSorter<ModelTabel> filtruTabel;
     private List<Abonat> listaProbaAbonati;
 
     public PanouStanga() {
         campCautare = new JTextField("Cautare...");
         tabelAbonati = new JTable();
         scrollPane = new JScrollPane(tabelAbonati);
+
         creareAbonati();
         initializare();
+        adaugareDocumentListenerCautare();
     }
 
     private void creareAbonati() {
@@ -52,6 +61,8 @@ public class PanouStanga extends JPanel {
         modelTabel = new ModelTabel(listaProbaAbonati);
         tabelAbonati.setModel(modelTabel);
         tabelAbonati.setAutoCreateRowSorter(true);
+        filtruTabel = new TableRowSorter<>(modelTabel);
+        tabelAbonati.setRowSorter(filtruTabel);
     }
 
     private void initializare() {
@@ -88,9 +99,40 @@ public class PanouStanga extends JPanel {
     }
 
     private void notificaUtilizatorul() {
-        JOptionPane.showMessageDialog(null, "Va rugam selectati un abonat!", 
-                "Stergere abonat din tabel", 
+        JOptionPane.showMessageDialog(null, "Va rugam selectati un abonat!",
+                "Stergere abonat din tabel",
                 JOptionPane.OK_OPTION);
+    }
+
+    private void adaugareDocumentListenerCautare() {
+        campCautare.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String text = campCautare.getText();
+
+                if (text.trim().length() == 0) {
+                    filtruTabel.setRowFilter(null);
+                } else {
+                    filtruTabel.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String text = campCautare.getText();
+
+                if (text.trim().length() == 0) {
+                    filtruTabel.setRowFilter(null);
+                } else {
+                    filtruTabel.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
     }
 
 }
