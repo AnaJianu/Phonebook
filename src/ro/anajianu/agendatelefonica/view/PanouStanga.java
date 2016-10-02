@@ -41,7 +41,7 @@ public class PanouStanga extends JPanel {
         List<Abonat> listaProbaAbonati = new ArrayList<>();
         NrMobil telefon = new NrMobil("0756798889");
         Abonat a1 = new Abonat("0", "Popescu", "Ion", telefon, "190032850028");
-        Abonat a2 = new Abonat("1", "Dumitru", "Aura", telefon, "291090340028");
+        Abonat a2 = new Abonat("1", "Dumitru", "Andra", telefon, "291090340028");
         Abonat a3 = new Abonat("2", "Visinescu", "Dan", telefon, "182082550028");
         listaProbaAbonati.add(a1);
         listaProbaAbonati.add(a2);

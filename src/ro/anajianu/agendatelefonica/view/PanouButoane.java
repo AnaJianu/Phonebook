@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 
 /**
  *
@@ -23,11 +24,17 @@ public class PanouButoane extends JPanel {
     private final JButton butonSortare;
     private final JButton butonCautare;
     private final JButton butonIesire;
+    private CarteDeTelefonController controller;
+            
+            
 
-    public PanouButoane() {
+    public PanouButoane(CarteDeTelefonController controller) {
+        
+        this.controller=controller;
+        
         butonAdaugare = new JButton("Adaugare");
         butonStergere = new JButton("Stergere");
-
+        
         butonModificare = new JButton("Modificare");
         butonSortare = new JButton("Sortare");
         butonCautare = new JButton("Cautare");
@@ -53,9 +60,12 @@ public class PanouButoane extends JPanel {
         butonStergere.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                System.out.print("Stergere");
+                controller.stergeAbonat();
             }
         });
     }
+    
+    
 
 }

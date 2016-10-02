@@ -13,8 +13,12 @@ public class CarteDeTelefonController {
    
    public CarteDeTelefonController(CarteDeTelefon model) {
        modelCarte=model;
-       viewCarte=new CarteDeTelefonGUI();
+       viewCarte=new CarteDeTelefonGUI(this);
 
    }
+
+    public void stergeAbonat() {
+        viewCarte.stergeCampuriDetaliiAbonat();
+    }
 
 }

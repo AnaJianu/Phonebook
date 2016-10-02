@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 
 /**
  *
@@ -27,7 +28,7 @@ public class PanouDetalii extends JPanel {
     private final JLabel cnpAbonatEticheta;
     private final JTextField cnpAbonatValoare;
 
-    public PanouDetalii() {
+    public PanouDetalii(CarteDeTelefonController controller) {
         iconAbonat = new ImageIcon("resources/emptyPhoto.png");
         pozaAbonat = new JLabel(iconAbonat);
         numeAbonat = new JTextField("Nume");
@@ -76,6 +77,13 @@ public class PanouDetalii extends JPanel {
         gbc.gridy = 2;
         gbc.ipadx = 200;
         add(cnpAbonatValoare, gbc);
+    }
+    
+    public void stergeCampuriDetaliiAbonat() {
+        numeAbonat.setText("");
+        prenumeAbonat.setText("");
+        telefonAbonatValoare.setText("");
+        cnpAbonatValoare.setText("");
     }
 
 }

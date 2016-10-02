@@ -7,6 +7,7 @@ package ro.anajianu.agendatelefonica.view;
 
 import java.awt.GridLayout;
 import javax.swing.JPanel;
+import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 
 /**
  *
@@ -16,9 +17,9 @@ public class PanouPrincipal extends JPanel{
     private final PanouStanga panouStanga;
     private final PanouDreapta panouDreapta;
     
-    public PanouPrincipal() {
+    public PanouPrincipal(CarteDeTelefonController controller) {
         panouStanga=new PanouStanga();
-        panouDreapta=new PanouDreapta();
+        panouDreapta=new PanouDreapta(controller);
         initializare();
     }
 
@@ -28,4 +29,11 @@ public class PanouPrincipal extends JPanel{
         add(panouDreapta);
     }
     
+    public PanouStanga getPanouStanga() {
+        return panouStanga;
+    }
+    
+    public PanouDreapta getPanouDreapta() {
+        return panouDreapta;
+    }
 }
