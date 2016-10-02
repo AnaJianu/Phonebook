@@ -34,5 +34,9 @@ public class CarteDeTelefonGUI {
         stergeCampuriDetaliiAbonat();
     }
 
+    public void stergeAbonatDinTabel() {
+        panouPrincipal.getPanouStanga().stergeAbonatDinTabel();
+    }
+
 
 }

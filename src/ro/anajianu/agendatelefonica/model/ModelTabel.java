@@ -58,6 +58,10 @@ public class ModelTabel extends AbstractTableModel{
     public void notificareAdaugareAbonat() {
         fireTableDataChanged();
     }
+
+    public void notificareStergereAbonat() {
+        fireTableDataChanged();
+    }
     
     
     

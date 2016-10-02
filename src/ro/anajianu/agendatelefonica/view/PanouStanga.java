@@ -73,8 +73,13 @@ public class PanouStanga extends JPanel {
 
     void adaugaAbonatInTabel(Abonat abonatNou) {
         listaProbaAbonati.add(abonatNou);
-        System.out.println(listaProbaAbonati);
         modelTabel.notificareAdaugareAbonat();
+    }
+
+    void stergeAbonatDinTabel() {
+        int randSelectat = tabelAbonati.getSelectedRow();
+        listaProbaAbonati.remove(randSelectat);
+        modelTabel.notificareStergereAbonat();
     }
 
 }
