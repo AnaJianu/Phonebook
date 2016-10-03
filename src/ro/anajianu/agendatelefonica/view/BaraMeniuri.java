@@ -86,4 +86,15 @@ public class BaraMeniuri extends JMenuBar {
             }
         });
     }
+    
+    private void initializareSubmeniuStergeAbonat() {
+        submeniuStergeAbonat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.stergeAbonat();
+            }
+        });
+        
+    }
+    
 }
