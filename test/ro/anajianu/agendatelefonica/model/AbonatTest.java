@@ -13,7 +13,7 @@ public class AbonatTest {
     @Before
     public void setUp() {
         nrTelefon= new NrMobil("0765789789");
-        abonat = new Abonat("Ion", "Popescu", nrTelefon, "2920298350013");
+        abonat = new Abonat("1", "Ion", "Popescu", nrTelefon, "2920298350013");
     }
     
     @Test

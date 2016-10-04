@@ -24,7 +24,7 @@ public class CarteDeTelefonTest {
     public void setUp() {
         agenda = new CarteDeTelefon();
         nrTelefon = new NrMobil("0765789789");
-        abonat = new Abonat("Ion", "Popescu", nrTelefon, "2920298350013");
+        abonat = new Abonat("1","Ion", "Popescu", nrTelefon, "2920298350013");
     }
     
     @Test
@@ -44,7 +44,7 @@ public class CarteDeTelefonTest {
 
     @Test
     public void testModificaAbonat() {
-        Abonat abonatModificat = new Abonat("Ion", "Popescu", nrTelefon, "1720298350013");
+        Abonat abonatModificat = new Abonat("1","Ion", "Popescu", nrTelefon, "1720298350013");
         agenda.adaugareAbonat(abonat);
                 
         assertTrue(agenda.contineAbonat(abonat));
