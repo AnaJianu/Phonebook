@@ -42,5 +42,9 @@ public class CarteDeTelefonGUI {
         panouPrincipal.getPanouDreapta().getPanouButoane().iesireDinAplicatie();
     }
 
+    public PanouPrincipal getPanouPrincipal() {
+        return panouPrincipal;
+    }
+    
 
 }

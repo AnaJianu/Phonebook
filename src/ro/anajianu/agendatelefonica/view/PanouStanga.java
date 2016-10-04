@@ -29,7 +29,7 @@ import ro.anajianu.agendatelefonica.model.NrMobil;
  */
 public class PanouStanga extends JPanel {
 
-    private final JTextField campCautare;
+    private JTextField campCautare;
     private final JScrollPane scrollPane;
     private final JTable tabelAbonati;
     private ModelTabel modelTabel;
@@ -43,7 +43,7 @@ public class PanouStanga extends JPanel {
 
         creareAbonati();
         initializare();
-        adaugareDocumentListenerCautare();
+        adaugareDocumentListenerCautare(campCautare);
     }
 
     private void creareAbonati() {
@@ -102,11 +102,13 @@ public class PanouStanga extends JPanel {
                 JOptionPane.OK_OPTION);
     }
 
-    private void adaugareDocumentListenerCautare() {
-        campCautare.getDocument().addDocumentListener(new DocumentListener() {
+    public void adaugareDocumentListenerCautare(JTextField campPentruListener) {
+        
+        
+        campPentruListener.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                String text = campCautare.getText();
+                String text = campPentruListener.getText();
 
                 if (text.trim().length() == 0) {
                     filtruTabel.setRowFilter(null);
@@ -117,7 +119,7 @@ public class PanouStanga extends JPanel {
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                String text = campCautare.getText();
+                String text = campPentruListener.getText();
 
                 if (text.trim().length() == 0) {
                     filtruTabel.setRowFilter(null);

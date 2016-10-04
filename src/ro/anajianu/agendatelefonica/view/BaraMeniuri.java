@@ -57,6 +57,8 @@ public class BaraMeniuri extends JMenuBar {
         submeniuDespre = new JMenuItem("Despre");
         initializare();
         initializareSubmeniuIesire();
+        initializareSubmeniuStergeAbonat();
+        initializareSubmeniuCautaAbonat();
     }
 
     private void initializare() {
@@ -96,5 +98,17 @@ public class BaraMeniuri extends JMenuBar {
         });
         
     }
+    
+    private void initializareSubmeniuCautaAbonat() {
+        submeniuCautaAbonat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.cautaAbonatDinMeniu();
+            }
+        });
+       
+    }
+    
+    
     
 }
