@@ -66,6 +66,7 @@ public class BaraMeniuri extends JMenuBar {
         initializareSubmeniuStergeAbonat();
         initializareSubmeniuCautaAbonat();
         initializareSubmeniuDeschide();
+        initializareSubmeniuSalvare();
     }
 
     private void initializare() {
@@ -131,6 +132,22 @@ public class BaraMeniuri extends JMenuBar {
                     }
                 }
 
+            }
+        });
+    }
+    
+    private void initializareSubmeniuSalvare() {
+        submeniuSalvare.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser=new JFileChooser();
+                fileChooser.setDialogTitle("Salveaza fisierul");
+                
+                int selection= fileChooser.showSaveDialog(null);
+                if (selection==JFileChooser.APPROVE_OPTION) {
+                    File fisierDeSalvat=fileChooser.getSelectedFile();
+                    System.out.println("Salveaza ca: "+ fisierDeSalvat.getAbsolutePath());
+                }
             }
         });
     }
