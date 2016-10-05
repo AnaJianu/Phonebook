@@ -5,8 +5,14 @@
  */
 package ro.anajianu.agendatelefonica.view;
 
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -34,12 +40,12 @@ public class BaraMeniuri extends JMenuBar {
     private final JMenu meniuAjutor;
     private final JMenuItem submeniuInregistrare;
     private final JMenuItem submeniuDespre;
-    
+
     private final CarteDeTelefonController controller;
 
     public BaraMeniuri(CarteDeTelefonController controller) {
-        this.controller=controller;
-        
+        this.controller = controller;
+
         meniuFisier = new JMenu("Fisier");
         submeniuDeschide = new JMenuItem("Deschide");
         submeniuSalvare = new JMenuItem("Salvare");
@@ -59,6 +65,7 @@ public class BaraMeniuri extends JMenuBar {
         initializareSubmeniuIesire();
         initializareSubmeniuStergeAbonat();
         initializareSubmeniuCautaAbonat();
+        initializareSubmeniuDeschide();
     }
 
     private void initializare() {
@@ -79,7 +86,7 @@ public class BaraMeniuri extends JMenuBar {
         add(meniuAjutor);
 
     }
-    
+
     private void initializareSubmeniuIesire() {
         submeniuIesire.addActionListener(new ActionListener() {
             @Override
@@ -88,7 +95,7 @@ public class BaraMeniuri extends JMenuBar {
             }
         });
     }
-    
+
     private void initializareSubmeniuStergeAbonat() {
         submeniuStergeAbonat.addActionListener(new ActionListener() {
             @Override
@@ -96,9 +103,9 @@ public class BaraMeniuri extends JMenuBar {
                 controller.stergeAbonat();
             }
         });
-        
+
     }
-    
+
     private void initializareSubmeniuCautaAbonat() {
         submeniuCautaAbonat.addActionListener(new ActionListener() {
             @Override
@@ -106,9 +113,26 @@ public class BaraMeniuri extends JMenuBar {
                 controller.cautaAbonatDinMeniu();
             }
         });
-       
+
     }
-    
-    
-    
+
+    private void initializareSubmeniuDeschide() {
+        submeniuDeschide.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                int returnValue = fileChooser.showOpenDialog(null);
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    File fisierSelectat = fileChooser.getSelectedFile();
+                    try {
+                        Desktop.getDesktop().open(fisierSelectat);
+                    } catch (IOException ex) {
+                        Logger.getLogger(BaraMeniuri.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+            }
+        });
+    }
+
 }

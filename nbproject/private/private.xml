@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/ana/NetBeansProjects/AgendaTelefonica/src/ro/anajianu/agendatelefonica/model/NrTelefon.java</file>
-            <file>file:/Users/ana/NetBeansProjects/AgendaTelefonica/src/ro/anajianu/agendatelefonica/model/Abonat.java</file>
-            <file>file:/Users/ana/NetBeansProjects/AgendaTelefonica/src/ro/anajianu/agendatelefonica/model/NrMobil.java</file>
-            <file>file:/Users/ana/NetBeansProjects/AgendaTelefonica/src/ro/anajianu/agendatelefonica/model/CarteDeTelefon.java</file>
-            <file>file:/Users/ana/NetBeansProjects/AgendaTelefonica/src/ro/anajianu/agendatelefonica/model/NrFix.java</file>
+            <file>file:/Users/ana/NetBeansProjects/AgendaTelefonica/src/ro/anajianu/agendatelefonica/view/PanouStanga.java</file>
+            <file>file:/Users/ana/NetBeansProjects/AgendaTelefonica/test/ro/anajianu/agendatelefonica/model/AbonatTest.java</file>
+            <file>file:/Users/ana/NetBeansProjects/AgendaTelefonica/test/ro/anajianu/agendatelefonica/model/CarteDeTelefonTest.java</file>
+            <file>file:/Users/ana/NetBeansProjects/AgendaTelefonica/src/ro/anajianu/agendatelefonica/controller/CarteDeTelefonController.java</file>
+            <file>file:/Users/ana/NetBeansProjects/AgendaTelefonica/src/ro/anajianu/agendatelefonica/view/FereastraCautare.java</file>
+            <file>file:/Users/ana/NetBeansProjects/AgendaTelefonica/src/ro/anajianu/agendatelefonica/view/BaraMeniuri.java</file>
         </group>
     </open-files>
 </project-private>
