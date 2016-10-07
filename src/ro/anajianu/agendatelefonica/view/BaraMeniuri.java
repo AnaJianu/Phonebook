@@ -16,7 +16,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 
 /**
@@ -24,6 +27,8 @@ import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
  * @author ana
  */
 public class BaraMeniuri extends JMenuBar {
+
+    private static boolean isAppRegistered = false;
 
     private final JMenu meniuFisier;
     private final JMenuItem submeniuDeschide;
@@ -67,6 +72,7 @@ public class BaraMeniuri extends JMenuBar {
         initializareSubmeniuCautaAbonat();
         initializareSubmeniuDeschide();
         initializareSubmeniuSalvare();
+        initializareSubmeniuInregistrare();
     }
 
     private void initializare() {
@@ -118,6 +124,7 @@ public class BaraMeniuri extends JMenuBar {
     }
 
     private void initializareSubmeniuDeschide() {
+        submeniuDeschide.setEnabled(isAppRegistered);
         submeniuDeschide.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -135,19 +142,49 @@ public class BaraMeniuri extends JMenuBar {
             }
         });
     }
-    
+
     private void initializareSubmeniuSalvare() {
+        submeniuSalvare.setEnabled(isAppRegistered);
         submeniuSalvare.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChooser=new JFileChooser();
+                JFileChooser fileChooser = new JFileChooser();
                 fileChooser.setDialogTitle("Salveaza fisierul");
-                
-                int selection= fileChooser.showSaveDialog(null);
-                if (selection==JFileChooser.APPROVE_OPTION) {
-                    File fisierDeSalvat=fileChooser.getSelectedFile();
-                    System.out.println("Salveaza ca: "+ fisierDeSalvat.getAbsolutePath());
+
+                int selection = fileChooser.showSaveDialog(null);
+                FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Agenda Telefonica files(*.atl)", "atl");
+                fileChooser.setFileFilter(extensionFilter);
+                if (selection == JFileChooser.APPROVE_OPTION) {
+                    File fisierDeSalvat = fileChooser.getSelectedFile();
+                    System.out.println("Salveaza ca: " + fisierDeSalvat.getAbsolutePath());
                 }
+            }
+        });
+    }
+
+    private void initializareSubmeniuInregistrare() {
+        submeniuInregistrare.addActionListener(new ActionListener() {
+            private final int codInregistrare = 1234;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String cod = JOptionPane.showInputDialog(null, "Va rugam introduceti codul de inregistrare!", "Cod inregistrare", JOptionPane.OK_CANCEL_OPTION);
+                if (cod.equals("1234")) {
+                    isAppRegistered=true;
+                    submeniuDeschide.setEnabled(isAppRegistered);
+                    submeniuSalvare.setEnabled(isAppRegistered);
+                    submeniuInregistrare.setEnabled(!isAppRegistered);
+                    JOptionPane.showMessageDialog(null, "Cod corect!",
+                "Operatiune reusita!",
+                JOptionPane.OK_OPTION);
+                
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cod invalid!",
+                "Atentie!",
+                JOptionPane.OK_OPTION);
+                }
+
             }
         });
     }

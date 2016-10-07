@@ -9,8 +9,12 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 import ro.anajianu.agendatelefonica.model.Abonat;
 import ro.anajianu.agendatelefonica.model.NrMobil;
@@ -20,7 +24,9 @@ import ro.anajianu.agendatelefonica.model.NrTelefon;
  *
  * @author ana
  */
-public class PanouDetalii extends JPanel {
+public class PanouDetalii extends JPanel implements ListSelectionListener {
+
+    private CarteDeTelefonController controller;
 
     private final JLabel pozaAbonat;
     private final ImageIcon iconAbonat;
@@ -32,6 +38,7 @@ public class PanouDetalii extends JPanel {
     private final JTextField cnpAbonatValoare;
 
     public PanouDetalii(CarteDeTelefonController controller) {
+        this.controller = controller;
         iconAbonat = new ImageIcon("resources/emptyPhoto.png");
         pozaAbonat = new JLabel(iconAbonat);
         numeAbonat = new JTextField("Nume");
@@ -95,8 +102,18 @@ public class PanouDetalii extends JPanel {
         Abonat abonatNou = new Abonat("3", numeAbonat.getText(), prenumeAbonat.getText(), nrTelefon, cnpAbonatValoare.getText());
 
         return abonatNou;
-        
-        
+
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        Abonat selectedAbonat = controller.getSelectedAbonat();
+        if (selectedAbonat != null) {
+            numeAbonat.setText(selectedAbonat.getNume());
+            prenumeAbonat.setText(selectedAbonat.getPrenume());
+            telefonAbonatValoare.setText(selectedAbonat.getNumarTelefon().toString());
+            cnpAbonatValoare.setText(selectedAbonat.getCNP());
+        }
 
     }
 

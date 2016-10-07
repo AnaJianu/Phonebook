@@ -13,14 +13,16 @@ import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
  *
  * @author ana
  */
-public class PanouPrincipal extends JPanel{
+public class PanouPrincipal extends JPanel {
+
     private final PanouStanga panouStanga;
     private final PanouDreapta panouDreapta;
-    
+
     public PanouPrincipal(CarteDeTelefonController controller) {
-        panouStanga=new PanouStanga();
-        panouDreapta=new PanouDreapta(controller);
+        panouStanga = new PanouStanga(controller);
+        panouDreapta = new PanouDreapta(controller);
         initializare();
+        initializareListenerSelectieTabel();
     }
 
     private void initializare() {
@@ -28,12 +30,18 @@ public class PanouPrincipal extends JPanel{
         add(panouStanga);
         add(panouDreapta);
     }
-    
+
     public PanouStanga getPanouStanga() {
         return panouStanga;
     }
-    
+
     public PanouDreapta getPanouDreapta() {
         return panouDreapta;
     }
+
+    private void initializareListenerSelectieTabel() {
+        PanouDetalii panouDetalii = panouDreapta.getPanouDetalii();
+        panouStanga.adaugaSelectionListenerPeTabel(panouDetalii);
+    }
+
 }

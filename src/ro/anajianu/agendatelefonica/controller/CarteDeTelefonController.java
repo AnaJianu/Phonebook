@@ -1,6 +1,7 @@
 package ro.anajianu.agendatelefonica.controller;
 
 import javax.swing.SwingUtilities;
+import ro.anajianu.agendatelefonica.model.Abonat;
 import ro.anajianu.agendatelefonica.model.CarteDeTelefon;
 import ro.anajianu.agendatelefonica.view.CarteDeTelefonGUI;
 import ro.anajianu.agendatelefonica.view.FereastraCautare;
@@ -44,5 +45,12 @@ public class CarteDeTelefonController {
         });
         viewCarte.getPanouPrincipal().getPanouStanga().adaugareDocumentListenerCautare(fereastraCautare.getCampCautare());
     }
+
+    public Abonat getSelectedAbonat() {
+        return viewCarte.getPanouPrincipal().getPanouStanga().getAbonatSelectatDinTabel();
+    }
+    
+    
+   
 
 }

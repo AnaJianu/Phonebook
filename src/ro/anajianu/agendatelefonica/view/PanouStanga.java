@@ -15,10 +15,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.TableRowSorter;
+import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 import ro.anajianu.agendatelefonica.model.Abonat;
 import ro.anajianu.agendatelefonica.model.ModelTabel;
 import ro.anajianu.agendatelefonica.model.NrMobil;
@@ -35,8 +37,11 @@ public class PanouStanga extends JPanel {
     private ModelTabel modelTabel;
     private TableRowSorter<ModelTabel> filtruTabel;
     private List<Abonat> listaProbaAbonati;
+    private final CarteDeTelefonController controller;
 
-    public PanouStanga() {
+    public PanouStanga(CarteDeTelefonController controller) {
+        this.controller = controller;
+
         campCautare = new JTextField("Cautare...");
         tabelAbonati = new JTable();
         scrollPane = new JScrollPane(tabelAbonati);
@@ -103,8 +108,7 @@ public class PanouStanga extends JPanel {
     }
 
     public void adaugareDocumentListenerCautare(JTextField campPentruListener) {
-        
-        
+
         campPentruListener.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -133,6 +137,23 @@ public class PanouStanga extends JPanel {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
+    }
+
+    public void adaugaSelectionListenerPeTabel(PanouDetalii panouDetalii) {
+        ListSelectionModel modelSelectie = tabelAbonati.getSelectionModel();
+        modelSelectie.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        modelSelectie.addListSelectionListener(panouDetalii);
+
+    }
+
+    public Abonat getAbonatSelectatDinTabel() {
+        int selectedRow = tabelAbonati.getSelectedRow();
+        if (selectedRow == -1) {
+            return null;
+        }
+        return modelTabel.getAbonatAt(selectedRow);
+
     }
 
 }

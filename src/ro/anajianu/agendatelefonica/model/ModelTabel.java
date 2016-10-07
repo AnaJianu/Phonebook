@@ -62,6 +62,10 @@ public class ModelTabel extends AbstractTableModel{
     public void notificareStergereAbonat() {
         fireTableDataChanged();
     }
+
+    public Abonat getAbonatAt(int selectedRow) {
+        return listaAbonati.get(selectedRow);
+    }
     
     
     

@@ -24,7 +24,7 @@ public class PanouButoane extends JPanel {
     private final JButton butonModificare;
     private final JButton butonCautare;
     private final JButton butonIesire;
-    private CarteDeTelefonController controller;
+    private final CarteDeTelefonController controller;
 
     public PanouButoane(CarteDeTelefonController controller) {
 
@@ -57,7 +57,6 @@ public class PanouButoane extends JPanel {
         butonStergere.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.print("Stergere");
                 controller.stergeAbonat();
             }
         });
@@ -86,5 +85,7 @@ public class PanouButoane extends JPanel {
             }
         });
     }
+    
+    
 
 }

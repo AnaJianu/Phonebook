@@ -10,7 +10,7 @@ public class CarteDeTelefonGUI {
     private final JFrame cadru;
     private final PanouPrincipal panouPrincipal;
     private final BaraMeniuri baraMeniuri;
-
+    
     public CarteDeTelefonGUI(CarteDeTelefonController controller) {
 
         panouPrincipal = new PanouPrincipal(controller);
