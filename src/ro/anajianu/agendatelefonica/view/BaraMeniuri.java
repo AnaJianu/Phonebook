@@ -5,6 +5,7 @@
  */
 package ro.anajianu.agendatelefonica.view;
 
+import com.sun.glass.events.KeyEvent;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -84,21 +85,25 @@ public class BaraMeniuri extends JMenuBar {
         meniuFisier.add(submeniuSalvare);
         meniuFisier.add(separatorMeniu);
         meniuFisier.add(submeniuIesire);
+        meniuFisier.setMnemonic(KeyEvent.VK_F);
         add(meniuFisier);
 
         meniuAbonati.add(submeniuAdaugaAbonat);
         meniuAbonati.add(submeniuCautaAbonat);
         meniuAbonati.add(submeniuStergeAbonat);
         meniuAbonati.add(submeniuModificaAbonat);
+        meniuAbonati.setMnemonic(KeyEvent.VK_A);
         add(meniuAbonati);
 
         meniuAjutor.add(submeniuInregistrare);
         meniuAjutor.add(submeniuDespre);
+        meniuAjutor.setMnemonic(KeyEvent.VK_U);
         add(meniuAjutor);
 
     }
 
     private void initializareSubmeniuIesire() {
+        submeniuIesire.setMnemonic(KeyEvent.VK_I);
         submeniuIesire.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -108,6 +113,7 @@ public class BaraMeniuri extends JMenuBar {
     }
 
     private void initializareSubmeniuStergeAbonat() {
+        submeniuStergeAbonat.setMnemonic(KeyEvent.VK_R);
         submeniuStergeAbonat.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -118,6 +124,7 @@ public class BaraMeniuri extends JMenuBar {
     }
 
     private void initializareSubmeniuCautaAbonat() {
+        submeniuCautaAbonat.setMnemonic(KeyEvent.VK_C);
         submeniuCautaAbonat.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -128,6 +135,7 @@ public class BaraMeniuri extends JMenuBar {
     }
 
     private void initializareSubmeniuDeschide() {
+        submeniuDeschide.setMnemonic(KeyEvent.VK_D);
         submeniuDeschide.setEnabled(isAppRegistered);
         submeniuDeschide.addActionListener(new ActionListener() {
             @Override
@@ -148,6 +156,7 @@ public class BaraMeniuri extends JMenuBar {
     }
 
     private void initializareSubmeniuSalvare() {
+        submeniuSalvare.setMnemonic(KeyEvent.VK_S);
         submeniuSalvare.setEnabled(isAppRegistered);
         submeniuSalvare.addActionListener(new ActionListener() {
             @Override
@@ -167,6 +176,7 @@ public class BaraMeniuri extends JMenuBar {
     }
 
     private void initializareSubmeniuInregistrare() {
+        submeniuInregistrare.setMnemonic(KeyEvent.VK_I);
         submeniuInregistrare.addActionListener(new ActionListener() {
             private final int codInregistrare = 1234;
 
@@ -194,6 +204,7 @@ public class BaraMeniuri extends JMenuBar {
     }
     
     private void initializareSubmeniuDespre() {
+        submeniuDespre.setMnemonic(KeyEvent.VK_D);
         submeniuDespre.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -220,6 +231,7 @@ public class BaraMeniuri extends JMenuBar {
     }
     
     private void initializareSubmeniuModificare() {
+        submeniuModificaAbonat.setMnemonic(KeyEvent.VK_M);
         submeniuModificaAbonat.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
