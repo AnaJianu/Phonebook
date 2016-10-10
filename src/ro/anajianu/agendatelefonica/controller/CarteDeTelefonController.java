@@ -1,5 +1,7 @@
 package ro.anajianu.agendatelefonica.controller;
 
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import ro.anajianu.agendatelefonica.model.Abonat;
 import ro.anajianu.agendatelefonica.model.CarteDeTelefon;
@@ -49,8 +51,25 @@ public class CarteDeTelefonController {
     public Abonat getSelectedAbonat() {
         return viewCarte.getPanouPrincipal().getPanouStanga().getAbonatSelectatDinTabel();
     }
-    
-    
-   
+
+    public List<Abonat> getListaAbonati() {
+        return modelCarte.getListaAbonati();
+    }
+
+    public void modificaAbonat() {
+        if (getSelectedAbonat() != null) {
+            Abonat abonatAfisat = viewCarte.getPanouPrincipal().getPanouDreapta().getPanouDetalii().getAbonatAfisat();
+            modelCarte.modificareAbonat(getSelectedAbonat(), abonatAfisat);
+            viewCarte.stergeCampuriDetaliiAbonat();
+        } else {
+            JOptionPane.showMessageDialog(null, "Va rugam selectati un abonat!",
+                    "Modificare abonat",
+                    JOptionPane.OK_OPTION);
+        }
+    }
+
+    public CarteDeTelefon getModelCarte() {
+        return modelCarte;
+    }
 
 }

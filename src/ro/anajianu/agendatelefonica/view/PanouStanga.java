@@ -22,6 +22,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.TableRowSorter;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 import ro.anajianu.agendatelefonica.model.Abonat;
+import ro.anajianu.agendatelefonica.model.CarteDeTelefon;
 import ro.anajianu.agendatelefonica.model.ModelTabel;
 import ro.anajianu.agendatelefonica.model.NrMobil;
 
@@ -38,10 +39,11 @@ public class PanouStanga extends JPanel {
     private TableRowSorter<ModelTabel> filtruTabel;
     private List<Abonat> listaProbaAbonati;
     private final CarteDeTelefonController controller;
+    private CarteDeTelefon modelCarte;
 
     public PanouStanga(CarteDeTelefonController controller) {
         this.controller = controller;
-
+        modelCarte=controller.getModelCarte();
         campCautare = new JTextField("Cautare...");
         tabelAbonati = new JTable();
         scrollPane = new JScrollPane(tabelAbonati);
@@ -52,16 +54,11 @@ public class PanouStanga extends JPanel {
     }
 
     private void creareAbonati() {
-        listaProbaAbonati = new ArrayList<>();
-        NrMobil telefon = new NrMobil("0756798889");
-        Abonat a1 = new Abonat("0", "Popescu", "Ion", telefon, "190032850028");
-        Abonat a2 = new Abonat("1", "Dumitru", "Andra", telefon, "291090340028");
-        Abonat a3 = new Abonat("2", "Visinescu", "Dan", telefon, "182082550028");
-        listaProbaAbonati.add(a1);
-        listaProbaAbonati.add(a2);
-        listaProbaAbonati.add(a3);
+        
+        listaProbaAbonati = controller.getListaAbonati();
 
-        modelTabel = new ModelTabel(listaProbaAbonati);
+
+        modelTabel = modelCarte.getModelTabel();
         tabelAbonati.setModel(modelTabel);
         tabelAbonati.setAutoCreateRowSorter(true);
         filtruTabel = new TableRowSorter<>(modelTabel);

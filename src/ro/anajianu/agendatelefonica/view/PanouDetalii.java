@@ -9,10 +9,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
@@ -26,7 +24,7 @@ import ro.anajianu.agendatelefonica.model.NrTelefon;
  */
 public class PanouDetalii extends JPanel implements ListSelectionListener {
 
-    private CarteDeTelefonController controller;
+    private final CarteDeTelefonController controller;
 
     private final JLabel pozaAbonat;
     private final ImageIcon iconAbonat;
@@ -116,5 +114,24 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
         }
 
     }
+    
+    public void modificaAbonatAfisat() {
+        Abonat abonatAfisat= controller.getSelectedAbonat();
+        
+    }
+    
+    public Abonat getAbonatAfisat() {
+        NrTelefon nrDeModificat= new NrMobil(telefonAbonatValoare.getText());
+        String numar="2";
+        String numeModificat=numeAbonat.getText();
+        String prenumeModificat=prenumeAbonat.getText();
+        String cnpModificat=cnpAbonatValoare.getText();
+        
+        return new Abonat(numar, numeModificat, prenumeModificat, nrDeModificat, cnpModificat);
+        
+       
+    }
+
+    
 
 }

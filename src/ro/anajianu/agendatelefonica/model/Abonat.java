@@ -54,6 +54,35 @@ public class Abonat {
     public void setNumarTelefon(NrTelefon nrTelefon) {
         this.nrTelefon = nrTelefon;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj==null) {
+            return false;
+        }
+        if (obj instanceof Abonat) {
+            Abonat altAbonat=(Abonat) obj;
+            if (!altAbonat.numar.equals(numar)) {
+                return false;
+            }
+            if (!altAbonat.nume.equals(nume)) {
+                return false;
+            }
+            if (!altAbonat.prenume.equals(prenume)) {
+                return false;
+            }
+            if (!altAbonat.nrTelefon.equals(nrTelefon)) {
+                return false;
+            }
+            if (!altAbonat.CNP.equals(CNP)) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+    
+    
     
     @Override
     public String toString() {

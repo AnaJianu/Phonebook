@@ -42,6 +42,8 @@ public class PanouButoane extends JPanel {
         initializareButonStergere();
         initializareButonIesire();
         initializareButonAdaugare();
+        initializareButonCautare();
+        initializareButonModificare();
 
         add(butonAdaugare);
         add(butonStergere);
@@ -82,6 +84,25 @@ public class PanouButoane extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.adaugaAbonat();
+            }
+        });
+    }
+    
+    private void initializareButonCautare() {
+        butonCautare.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.cautaAbonatDinMeniu();
+            }
+        });
+    }
+    
+    private void initializareButonModificare() {
+        butonModificare.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.modificaAbonat();
+                
             }
         });
     }
