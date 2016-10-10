@@ -7,6 +7,19 @@ package ro.anajianu.agendatelefonica.view;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoField;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -99,18 +112,44 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
     public Abonat getAbonatDeAdaugat() {
         String nrTelefonIntrodus = telefonAbonatValoare.getText();
         NrTelefon nrTelefon;
-        
-        if (nrTelefonIntrodus.length()==10 && (nrTelefonIntrodus.startsWith("02") || nrTelefonIntrodus.startsWith("03"))) {
+
+        if (nrTelefonIntrodus.length() == 10 && (nrTelefonIntrodus.startsWith("02") || nrTelefonIntrodus.startsWith("03"))) {
             nrTelefon = new NrFix(nrTelefonIntrodus);
-        } else if (nrTelefonIntrodus.length()==10&& nrTelefonIntrodus.startsWith("07")) {
+        } else if (nrTelefonIntrodus.length() == 10 && nrTelefonIntrodus.startsWith("07")) {
             nrTelefon = new NrMobil(nrTelefonIntrodus);
         } else {
             JOptionPane.showMessageDialog(null, "Numar invalid!", "Atentie!", JOptionPane.WARNING_MESSAGE);
             throw new RuntimeException("Numar invalid!");
         }
-        int nrAbonati=controller.getListaAbonati().size();
-        String idCurent= Integer.toString(nrAbonati);
-        Abonat abonatNou = new Abonat(idCurent, numeAbonat.getText(), prenumeAbonat.getText(), nrTelefon, cnpAbonatValoare.getText());
+        int nrAbonati = controller.getListaAbonati().size();
+        String idCurent = Integer.toString(nrAbonati);
+
+        String numeIntrodus = numeAbonat.getText();
+        String prenumeIntrodus = prenumeAbonat.getText();
+        String cnpIntrodus = cnpAbonatValoare.getText();
+
+        if (numeIntrodus.length() == 0 && prenumeIntrodus.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Introduceti numele si prenumele!", "Atentie!", JOptionPane.WARNING_MESSAGE);
+            throw new RuntimeException("Nume si prenume lipsa!");
+        }
+
+        String dataDinCNP = cnpIntrodus.substring(1, 7);
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd");
+            sdf.setLenient(false);
+            sdf.parse(dataDinCNP);
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Data de nastere invalida!", "Atentie!", JOptionPane.WARNING_MESSAGE);
+            throw new RuntimeException(ex);
+        }
+
+        if (cnpIntrodus.length() != 13 && (!cnpIntrodus.startsWith("1") || !cnpIntrodus.startsWith("2"))) {
+            System.out.print(cnpIntrodus.length());
+            JOptionPane.showMessageDialog(null, "Introduceti CNP-ul corect!", "Atentie!", JOptionPane.WARNING_MESSAGE);
+            throw new RuntimeException("CNP invalid!");
+        }
+
+        Abonat abonatNou = new Abonat(idCurent, numeIntrodus, prenumeIntrodus, nrTelefon, cnpIntrodus);
 
         return abonatNou;
 
