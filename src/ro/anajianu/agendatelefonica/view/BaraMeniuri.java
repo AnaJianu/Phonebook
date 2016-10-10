@@ -6,6 +6,8 @@
 package ro.anajianu.agendatelefonica.view;
 
 import java.awt.Desktop;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -13,11 +15,15 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.JTextArea;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
@@ -73,6 +79,7 @@ public class BaraMeniuri extends JMenuBar {
         initializareSubmeniuDeschide();
         initializareSubmeniuSalvare();
         initializareSubmeniuInregistrare();
+        initializareSubmeniuDespre();
     }
 
     private void initializare() {
@@ -186,6 +193,32 @@ public class BaraMeniuri extends JMenuBar {
                 }
 
             }
+        });
+    }
+    
+    private void initializareSubmeniuDespre() {
+        submeniuDespre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String[] texte={"Autorul aplicatiei: Ana Jianu. ",
+                    "Aplicatia este o agenda telefonica si are, pe scurt, facilitati de: ",  
+                    "1.Adaugare abonat",
+                    "2.Stergere abonat",
+                    "3.Sortare lista abonati",
+                    "4.Modificare date abonat",
+                    "5.Cautare abonat",
+                    "6.Iesire din aplicatie"
+                };
+                JList lista= new JList(texte);
+                
+                JScrollPane panouDespre= new  JScrollPane(lista);
+                
+             
+                panouDespre.setPreferredSize(new Dimension(350, 200));
+                JOptionPane.showMessageDialog(null, panouDespre,"Despre autor si aplicatie",JOptionPane.CLOSED_OPTION);
+                
+            }
+            
         });
     }
 
