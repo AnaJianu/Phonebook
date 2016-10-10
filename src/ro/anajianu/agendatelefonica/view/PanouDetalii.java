@@ -9,12 +9,14 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 import ro.anajianu.agendatelefonica.model.Abonat;
+import ro.anajianu.agendatelefonica.model.NrFix;
 import ro.anajianu.agendatelefonica.model.NrMobil;
 import ro.anajianu.agendatelefonica.model.NrTelefon;
 
@@ -95,7 +97,17 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
     }
 
     public Abonat getAbonatDeAdaugat() {
-        NrTelefon nrTelefon = new NrMobil(telefonAbonatValoare.getText());
+        String nrTelefonIntrodus = telefonAbonatValoare.getText();
+        NrTelefon nrTelefon;
+        
+        if (nrTelefonIntrodus.length()==10 && (nrTelefonIntrodus.startsWith("02") || nrTelefonIntrodus.startsWith("03"))) {
+            nrTelefon = new NrFix(nrTelefonIntrodus);
+        } else if (nrTelefonIntrodus.length()==10&& nrTelefonIntrodus.startsWith("07")) {
+            nrTelefon = new NrMobil(nrTelefonIntrodus);
+        } else {
+            JOptionPane.showMessageDialog(null, "Numar invalid!", "Atentie!", JOptionPane.WARNING_MESSAGE);
+            throw new RuntimeException("Numar invalid!");
+        }
 
         Abonat abonatNou = new Abonat("3", numeAbonat.getText(), prenumeAbonat.getText(), nrTelefon, cnpAbonatValoare.getText());
 
@@ -114,24 +126,21 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
         }
 
     }
-    
+
     public void modificaAbonatAfisat() {
-        Abonat abonatAfisat= controller.getSelectedAbonat();
-        
-    }
-    
-    public Abonat getAbonatAfisat() {
-        NrTelefon nrDeModificat= new NrMobil(telefonAbonatValoare.getText());
-        String numar="2";
-        String numeModificat=numeAbonat.getText();
-        String prenumeModificat=prenumeAbonat.getText();
-        String cnpModificat=cnpAbonatValoare.getText();
-        
-        return new Abonat(numar, numeModificat, prenumeModificat, nrDeModificat, cnpModificat);
-        
-       
+        Abonat abonatAfisat = controller.getSelectedAbonat();
+
     }
 
-    
+    public Abonat getAbonatAfisat() {
+        NrTelefon nrDeModificat = new NrMobil(telefonAbonatValoare.getText());
+        String numar = "2";
+        String numeModificat = numeAbonat.getText();
+        String prenumeModificat = prenumeAbonat.getText();
+        String cnpModificat = cnpAbonatValoare.getText();
+
+        return new Abonat(numar, numeModificat, prenumeModificat, nrDeModificat, cnpModificat);
+
+    }
 
 }
