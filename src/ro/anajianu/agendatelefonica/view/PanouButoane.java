@@ -56,6 +56,7 @@ public class PanouButoane extends JPanel {
     }
 
     private void initializareButonStergere() {
+        butonStergere.setToolTipText("Sterge abonat");
         butonStergere.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -65,6 +66,7 @@ public class PanouButoane extends JPanel {
     }
 
     private void initializareButonIesire() {
+        butonIesire.setToolTipText("Iesire din aplicatie");
         butonIesire.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -80,6 +82,7 @@ public class PanouButoane extends JPanel {
                 }
     }
     private void initializareButonAdaugare() {
+        butonAdaugare.setToolTipText("Adaugare abonat");
         butonAdaugare.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -89,6 +92,7 @@ public class PanouButoane extends JPanel {
     }
     
     private void initializareButonCautare() {
+        butonCautare.setToolTipText("Cautare abonat");
         butonCautare.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -98,6 +102,7 @@ public class PanouButoane extends JPanel {
     }
     
     private void initializareButonModificare() {
+        butonModificare.setToolTipText("Modificare date abonat");
         butonModificare.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
