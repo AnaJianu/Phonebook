@@ -8,13 +8,20 @@ package ro.anajianu.agendatelefonica.view;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
@@ -43,7 +50,7 @@ public class PanouStanga extends JPanel {
 
     public PanouStanga(CarteDeTelefonController controller) {
         this.controller = controller;
-        modelCarte=controller.getModelCarte();
+        modelCarte = controller.getModelCarte();
         campCautare = new JTextField("Cautare...");
         tabelAbonati = new JTable();
         scrollPane = new JScrollPane(tabelAbonati);
@@ -51,12 +58,12 @@ public class PanouStanga extends JPanel {
         creareAbonati();
         initializare();
         adaugareDocumentListenerCautare(campCautare);
+        initializareActiuneDeleteTabel();
     }
 
     private void creareAbonati() {
-        
-        listaProbaAbonati = controller.getListaAbonati();
 
+        listaProbaAbonati = controller.getListaAbonati();
 
         modelTabel = modelCarte.getModelTabel();
         tabelAbonati.setModel(modelTabel);
@@ -151,6 +158,32 @@ public class PanouStanga extends JPanel {
         }
         return modelTabel.getAbonatAt(selectedRow);
 
+    }
+
+    private void initializareActiuneDeleteTabel() {
+        int condition = JComponent.WHEN_IN_FOCUSED_WINDOW;
+        InputMap inputMap = tabelAbonati.getInputMap(condition);
+        ActionMap actionMap = tabelAbonati.getActionMap();
+        
+        String DELETE="Delete";
+       
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), DELETE);
+        actionMap.put(DELETE, new AbstractAction() {
+           
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (controller.getSelectedAbonat() != null) {
+                    int n = JOptionPane.showConfirmDialog(null, "Confirmati stergerea abonatului?", "Confirmare stergere", JOptionPane.YES_NO_OPTION);
+                    if (n == 0) {
+                        controller.stergeAbonat();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Va rugam selectati un abonat!",
+                            "Stergere abonat",
+                            JOptionPane.OK_OPTION);
+                }
+            }
+        });
     }
 
 }
