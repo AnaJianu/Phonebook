@@ -60,7 +60,16 @@ public class PanouButoane extends JPanel {
         butonStergere.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.stergeAbonat();
+                if (controller.getSelectedAbonat() != null) {
+                    int n = JOptionPane.showConfirmDialog(null, "Confirmati stergerea abonatului?", "Confirmare stergere", JOptionPane.YES_NO_OPTION);
+                    if (n == 0) {
+                        controller.stergeAbonat();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Va rugam selectati un abonat!",
+                            "Stergere abonat",
+                            JOptionPane.OK_OPTION);
+                }
             }
         });
     }
@@ -74,13 +83,14 @@ public class PanouButoane extends JPanel {
             }
         });
     }
-    
+
     public void iesireDinAplicatie() {
-        int n = JOptionPane.showConfirmDialog(null, "Confirmati iesirea din aplicatie?","Iesire aplicatie", JOptionPane.YES_NO_OPTION);
-                if (n==0) {
-                    System.exit(0);
-                }
+        int n = JOptionPane.showConfirmDialog(null, "Confirmati iesirea din aplicatie?", "Iesire aplicatie", JOptionPane.YES_NO_OPTION);
+        if (n == 0) {
+            System.exit(0);
+        }
     }
+
     private void initializareButonAdaugare() {
         butonAdaugare.setToolTipText("Adaugare abonat");
         butonAdaugare.addActionListener(new ActionListener() {
@@ -90,7 +100,7 @@ public class PanouButoane extends JPanel {
             }
         });
     }
-    
+
     private void initializareButonCautare() {
         butonCautare.setToolTipText("Cautare abonat");
         butonCautare.addActionListener(new ActionListener() {
@@ -100,18 +110,16 @@ public class PanouButoane extends JPanel {
             }
         });
     }
-    
+
     private void initializareButonModificare() {
         butonModificare.setToolTipText("Modificare date abonat");
         butonModificare.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.modificaAbonat();
-                
+
             }
         });
     }
-    
-    
 
 }
