@@ -133,6 +133,12 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
             throw new RuntimeException("Nume si prenume lipsa!");
         }
 
+        if (cnpIntrodus.length() != 13 && (!cnpIntrodus.startsWith("1") || !cnpIntrodus.startsWith("2"))) {
+            System.out.print(cnpIntrodus.length());
+            JOptionPane.showMessageDialog(null, "Introduceti CNP-ul corect!", "Atentie!", JOptionPane.WARNING_MESSAGE);
+            throw new RuntimeException("CNP invalid!");
+        }
+
         String dataDinCNP = cnpIntrodus.substring(1, 7);
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd");
@@ -141,12 +147,6 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Data de nastere invalida!", "Atentie!", JOptionPane.WARNING_MESSAGE);
             throw new RuntimeException(ex);
-        }
-
-        if (cnpIntrodus.length() != 13 && (!cnpIntrodus.startsWith("1") || !cnpIntrodus.startsWith("2"))) {
-            System.out.print(cnpIntrodus.length());
-            JOptionPane.showMessageDialog(null, "Introduceti CNP-ul corect!", "Atentie!", JOptionPane.WARNING_MESSAGE);
-            throw new RuntimeException("CNP invalid!");
         }
 
         Abonat abonatNou = new Abonat(idCurent, numeIntrodus, prenumeIntrodus, nrTelefon, cnpIntrodus);
