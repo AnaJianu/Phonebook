@@ -76,6 +76,7 @@ public class BaraMeniuri extends JMenuBar {
         initializareSubmeniuSalvare();
         initializareSubmeniuInregistrare();
         initializareSubmeniuDespre();
+        initializareSubmeniuModificare();
     }
 
     private void initializare() {
@@ -215,6 +216,15 @@ public class BaraMeniuri extends JMenuBar {
                 
             }
             
+        });
+    }
+    
+    private void initializareSubmeniuModificare() {
+        submeniuModificaAbonat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.modificaAbonat();
+            }
         });
     }
 
