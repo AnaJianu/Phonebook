@@ -108,8 +108,9 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
             JOptionPane.showMessageDialog(null, "Numar invalid!", "Atentie!", JOptionPane.WARNING_MESSAGE);
             throw new RuntimeException("Numar invalid!");
         }
-
-        Abonat abonatNou = new Abonat("3", numeAbonat.getText(), prenumeAbonat.getText(), nrTelefon, cnpAbonatValoare.getText());
+        int nrAbonati=controller.getListaAbonati().size();
+        String idCurent= Integer.toString(nrAbonati);
+        Abonat abonatNou = new Abonat(idCurent, numeAbonat.getText(), prenumeAbonat.getText(), nrTelefon, cnpAbonatValoare.getText());
 
         return abonatNou;
 
