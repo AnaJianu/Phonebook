@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CarteDeTelefon {
     
-    private List<Abonat> abonati=new LinkedList<>();
+    private final List<Abonat> abonati=new LinkedList<>();
     private ModelTabel modelTabel;
 
     public CarteDeTelefon() {

@@ -162,14 +162,14 @@ public class BaraMeniuri extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
-                fileChooser.setDialogTitle("Salveaza fisierul");
+                fileChooser.setDialogTitle("Alege locatia de salvare");
 
                 int selection = fileChooser.showSaveDialog(null);
-                FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Agenda Telefonica files(*.atl)", "atl");
-                fileChooser.setFileFilter(extensionFilter);
                 if (selection == JFileChooser.APPROVE_OPTION) {
-                    File fisierDeSalvat = fileChooser.getSelectedFile();
-                    System.out.println("Salveaza ca: " + fisierDeSalvat.getAbsolutePath());
+                    String absolutePath = fileChooser.getSelectedFile().getAbsolutePath();
+                    File file = new File(absolutePath);
+                    System.out.print(file);
+                    controller.salveazaFisier(file);
                 }
             }
         });
@@ -185,31 +185,31 @@ public class BaraMeniuri extends JMenuBar {
 
                 String cod = JOptionPane.showInputDialog(null, "Va rugam introduceti codul de inregistrare!", "Cod inregistrare", JOptionPane.OK_CANCEL_OPTION);
                 if (cod.equals("1234")) {
-                    isAppRegistered=true;
+                    isAppRegistered = true;
                     submeniuDeschide.setEnabled(isAppRegistered);
                     submeniuSalvare.setEnabled(isAppRegistered);
                     submeniuInregistrare.setEnabled(!isAppRegistered);
                     JOptionPane.showMessageDialog(null, "Cod corect!",
-                "Operatiune reusita!",
-                JOptionPane.OK_OPTION);
-                
+                            "Operatiune reusita!",
+                            JOptionPane.OK_OPTION);
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Cod invalid!",
-                "Atentie!",
-                JOptionPane.OK_OPTION);
+                            "Atentie!",
+                            JOptionPane.OK_OPTION);
                 }
 
             }
         });
     }
-    
+
     private void initializareSubmeniuDespre() {
         submeniuDespre.setMnemonic(KeyEvent.VK_D);
         submeniuDespre.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String[] texte={"Autorul aplicatiei: Ana Jianu. ",
-                    "Aplicatia este o agenda telefonica si are, pe scurt, facilitati de: ",  
+                String[] texte = {"Autorul aplicatiei: Ana Jianu. ",
+                    "Aplicatia este o agenda telefonica si are, pe scurt, facilitati de: ",
                     "1.Adaugare abonat",
                     "2.Stergere abonat",
                     "3.Sortare lista abonati",
@@ -217,19 +217,18 @@ public class BaraMeniuri extends JMenuBar {
                     "5.Cautare abonat",
                     "6.Iesire din aplicatie"
                 };
-                JList lista= new JList(texte);
-                
-                JScrollPane panouDespre= new  JScrollPane(lista);
-                
-             
+                JList lista = new JList(texte);
+
+                JScrollPane panouDespre = new JScrollPane(lista);
+
                 panouDespre.setPreferredSize(new Dimension(350, 200));
-                JOptionPane.showMessageDialog(null, panouDespre,"Despre autor si aplicatie",JOptionPane.CLOSED_OPTION);
-                
+                JOptionPane.showMessageDialog(null, panouDespre, "Despre autor si aplicatie", JOptionPane.CLOSED_OPTION);
+
             }
-            
+
         });
     }
-    
+
     private void initializareSubmeniuModificare() {
         submeniuModificaAbonat.setMnemonic(KeyEvent.VK_M);
         submeniuModificaAbonat.addActionListener(new ActionListener() {

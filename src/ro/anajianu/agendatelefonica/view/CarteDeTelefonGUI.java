@@ -11,11 +11,11 @@ public class CarteDeTelefonGUI {
     private final JFrame cadru;
     private final PanouPrincipal panouPrincipal;
     private final BaraMeniuri baraMeniuri;
-    
+
     public CarteDeTelefonGUI(CarteDeTelefonController controller) {
 
         panouPrincipal = new PanouPrincipal(controller);
-        baraMeniuri=new BaraMeniuri(controller);
+        baraMeniuri = new BaraMeniuri(controller);
         cadru = new JFrame("Agenda Telefonica");
         cadru.setJMenuBar(baraMeniuri);
         cadru.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,7 +30,7 @@ public class CarteDeTelefonGUI {
     }
 
     public void adaugaAbonatDinView() {
-        Abonat abonatNou=panouPrincipal.getPanouDreapta().getPanouDetalii().getAbonatDeAdaugat();
+        Abonat abonatNou = panouPrincipal.getPanouDreapta().getPanouDetalii().getAbonatDeAdaugat();
         panouPrincipal.getPanouStanga().adaugaAbonatInTabel(abonatNou);
         stergeCampuriDetaliiAbonat();
     }
@@ -53,11 +53,9 @@ public class CarteDeTelefonGUI {
         Object optiuneSelectata = JOptionPane.showInputDialog(null, "Alegeti criteriul de sortare", "Sortare lista", JOptionPane.DEFAULT_OPTION, null, coloane, "Nume");
         if (optiuneSelectata != null) {
             String coloanaSelectata = optiuneSelectata.toString();
-            System.out.println(coloanaSelectata);
             panouPrincipal.getPanouStanga().sortareAbonat(coloanaSelectata);
         }
-        
+
     }
-    
 
 }

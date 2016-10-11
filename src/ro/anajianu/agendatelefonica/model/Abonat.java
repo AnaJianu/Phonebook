@@ -1,6 +1,8 @@
 package ro.anajianu.agendatelefonica.model;
 
-public class Abonat {
+import java.io.Serializable;
+
+public class Abonat implements Serializable{
     private String numar;
     private String nume;
     private String prenume;

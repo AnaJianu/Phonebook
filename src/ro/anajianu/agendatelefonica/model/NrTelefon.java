@@ -1,7 +1,9 @@
 package ro.anajianu.agendatelefonica.model;
 
+import java.io.Serializable;
 
-public abstract class NrTelefon {
+
+public abstract class NrTelefon implements Serializable{
     private String nrTelefon;
     
     public NrTelefon(String nrTelefon) {
