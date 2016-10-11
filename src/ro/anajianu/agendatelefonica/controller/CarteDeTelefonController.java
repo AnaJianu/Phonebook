@@ -8,12 +8,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import ro.anajianu.agendatelefonica.model.Abonat;
 import ro.anajianu.agendatelefonica.model.CarteDeTelefon;
+import ro.anajianu.agendatelefonica.start.ThreadSalvareBazaDate;
 import ro.anajianu.agendatelefonica.view.CarteDeTelefonGUI;
 import ro.anajianu.agendatelefonica.view.FereastraCautare;
 
@@ -117,13 +120,22 @@ public class CarteDeTelefonController {
 
             modelCarte.incarcaBazaDeDate(bazaDate);
             viewCarte.getPanouPrincipal().getPanouStanga().initializareListaAbonatiInTabel();
-
+            programeazaSalvareBazeiDeDate(fisierSelectat);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CarteDeTelefonController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(CarteDeTelefonController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    
+    private void programeazaSalvareBazeiDeDate(File file) {
+        TimerTask salvator = new ThreadSalvareBazaDate(this, file);
+        Timer timer = new Timer(true);
+        timer.scheduleAtFixedRate(salvator, 0, 300*1000);
+        
+
+        
     }
 
 }

@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Abonat implements Serializable{
+    
+    private static final long serialVersionUID = 4404946957604206097L;
+    
     private String numar;
     private String nume;
     private String prenume;
