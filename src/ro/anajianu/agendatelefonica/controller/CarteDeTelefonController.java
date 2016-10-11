@@ -35,6 +35,10 @@ public class CarteDeTelefonController {
         incarcaDateleLaPornireaAplicatiei();
 
     }
+    
+    public void initializareView() {
+        viewCarte.initializare();
+    }
 
     private void incarcaDateleLaPornireaAplicatiei() {
         File file = new File("resources/agenda.atl");

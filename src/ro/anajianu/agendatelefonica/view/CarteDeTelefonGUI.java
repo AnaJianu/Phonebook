@@ -22,9 +22,13 @@ public class CarteDeTelefonGUI {
         cadru.setSize(new Dimension(1000, 1000));
         cadru.getContentPane().add(panouPrincipal);
 
-        cadru.setVisible(true);
+        
     }
 
+    public void initializare() {
+        cadru.setVisible(true);
+    }
+    
     public void stergeCampuriDetaliiAbonat() {
         panouPrincipal.getPanouDreapta().getPanouDetalii().stergeCampuriDetaliiAbonat();
     }
