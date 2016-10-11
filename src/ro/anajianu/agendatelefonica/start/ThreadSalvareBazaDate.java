@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ro.anajianu.agendatelefonica.start;
 
 import java.io.File;
@@ -10,10 +5,6 @@ import java.util.Date;
 import java.util.TimerTask;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 
-/**
- *
- * @author ana
- */
 public class ThreadSalvareBazaDate extends TimerTask {
 
     private final CarteDeTelefonController controller;

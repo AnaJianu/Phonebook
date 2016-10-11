@@ -2,7 +2,6 @@ package ro.anajianu.agendatelefonica.start;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.sound.midi.ControllerEventListener;
 import javax.swing.SwingUtilities;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 import ro.anajianu.agendatelefonica.model.CarteDeTelefon;
