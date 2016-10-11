@@ -18,18 +18,21 @@ public class PanouDreapta extends JPanel {
 
     private final PanouDetalii panouDetalii;
     private final PanouButoane panouButoane;
+    private final PanouReclame panouReclame;
 
     public PanouDreapta(CarteDeTelefonController controller) {
         panouDetalii = new PanouDetalii(controller);
         panouButoane = new PanouButoane(controller);
+        panouReclame = new PanouReclame();
         initializare();
     }
 
     private void initializare() {
         setSize(new Dimension(500, 900));
-        setLayout(new GridLayout(2, 1));
+        setLayout(new GridLayout(3, 1));
         add(panouDetalii);
         add(panouButoane);
+        add(panouReclame);
     }
     
     public PanouDetalii getPanouDetalii() {
