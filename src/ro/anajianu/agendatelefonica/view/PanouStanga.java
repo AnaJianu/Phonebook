@@ -33,8 +33,6 @@ import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 import ro.anajianu.agendatelefonica.model.Abonat;
 import ro.anajianu.agendatelefonica.model.CarteDeTelefon;
 import ro.anajianu.agendatelefonica.model.ModelTabel;
-import ro.anajianu.agendatelefonica.model.NrMobil;
-import ro.anajianu.agendatelefonica.model.comparators.ComparatorNume;
 
 /**
  *
@@ -42,14 +40,14 @@ import ro.anajianu.agendatelefonica.model.comparators.ComparatorNume;
  */
 public class PanouStanga extends JPanel {
 
-    private JTextField campCautare;
+    private final JTextField campCautare;
     private final JScrollPane scrollPane;
     private final JTable tabelAbonati;
     private ModelTabel modelTabel;
     private TableRowSorter<ModelTabel> filtruTabel;
     private List<Abonat> listaProbaAbonati;
     private final CarteDeTelefonController controller;
-    private CarteDeTelefon modelCarte;
+    private final CarteDeTelefon modelCarte;
 
     public PanouStanga(CarteDeTelefonController controller) {
         this.controller = controller;
@@ -58,19 +56,18 @@ public class PanouStanga extends JPanel {
         tabelAbonati = new JTable();
         scrollPane = new JScrollPane(tabelAbonati);
 
-        creareAbonati();
+        initializareListaAbonatiInTabel();
         initializare();
         adaugareDocumentListenerCautare(campCautare);
         initializareActiuneDeleteTabel();
     }
 
-    private void creareAbonati() {
+    public final void initializareListaAbonatiInTabel() {
 
         listaProbaAbonati = controller.getListaAbonati();
 
         modelTabel = modelCarte.getModelTabel();
         tabelAbonati.setModel(modelTabel);
-//        tabelAbonati.setAutoCreateRowSorter(true);
         filtruTabel = new TableRowSorter<>(modelTabel);
         tabelAbonati.setRowSorter(filtruTabel);
     }
@@ -114,7 +111,7 @@ public class PanouStanga extends JPanel {
                 JOptionPane.OK_OPTION);
     }
 
-    public void adaugareDocumentListenerCautare(JTextField campPentruListener) {
+    public final void adaugareDocumentListenerCautare(JTextField campPentruListener) {
 
         campPentruListener.getDocument().addDocumentListener(new DocumentListener() {
             @Override

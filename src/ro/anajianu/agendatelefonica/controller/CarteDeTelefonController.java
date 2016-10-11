@@ -1,9 +1,11 @@
 package ro.anajianu.agendatelefonica.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
 import java.util.logging.Level;
@@ -27,7 +29,13 @@ public class CarteDeTelefonController {
     public CarteDeTelefonController(CarteDeTelefon model) {
         modelCarte = model;
         viewCarte = new CarteDeTelefonGUI(this);
+        incarcaDateleLaPornireaAplicatiei();
 
+    }
+
+    private void incarcaDateleLaPornireaAplicatiei() {
+        File file = new File("resources/agenda.atl");
+        incarcaDateDinFisier(file);
     }
 
     public void stergeAbonat() {
@@ -94,6 +102,25 @@ public class CarteDeTelefonController {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CarteDeTelefonController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
+            Logger.getLogger(CarteDeTelefonController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void incarcaDateDinFisier(File fisierSelectat) {
+        FileInputStream fis;
+        try {
+            fis = new FileInputStream(fisierSelectat);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            List<Abonat> bazaDate = (List<Abonat>) ois.readObject();
+            ois.close();
+
+            modelCarte.incarcaBazaDeDate(bazaDate);
+            viewCarte.getPanouPrincipal().getPanouStanga().initializareListaAbonatiInTabel();
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CarteDeTelefonController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(CarteDeTelefonController.class.getName()).log(Level.SEVERE, null, ex);
         }
 

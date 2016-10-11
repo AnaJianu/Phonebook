@@ -6,14 +6,10 @@
 package ro.anajianu.agendatelefonica.view;
 
 import com.sun.glass.events.KeyEvent;
-import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JList;
 import javax.swing.JMenu;
@@ -22,7 +18,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 
 /**
@@ -144,11 +139,7 @@ public class BaraMeniuri extends JMenuBar {
                 int returnValue = fileChooser.showOpenDialog(null);
                 if (returnValue == JFileChooser.APPROVE_OPTION) {
                     File fisierSelectat = fileChooser.getSelectedFile();
-                    try {
-                        Desktop.getDesktop().open(fisierSelectat);
-                    } catch (IOException ex) {
-                        Logger.getLogger(BaraMeniuri.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    controller.incarcaDateDinFisier(fisierSelectat);
                 }
 
             }
