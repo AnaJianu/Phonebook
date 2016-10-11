@@ -28,8 +28,9 @@ public class CarteDeTelefon {
     
     public void modificareAbonat(Abonat abonatVechi, Abonat abonatNou) {
         if (abonati.contains(abonatVechi)) {
-            abonati.remove(abonatVechi);
-            abonati.add(abonatNou);
+            int indexOf = abonati.indexOf(abonatVechi);
+            abonatNou.setNumar(abonatVechi.getNumar());
+            abonati.set(indexOf, abonatNou);
             modelTabel.notificareAdaugareAbonat();
         }
                 
