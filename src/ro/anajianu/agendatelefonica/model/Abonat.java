@@ -1,6 +1,7 @@
 package ro.anajianu.agendatelefonica.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Abonat implements Serializable{
     private String numar;
@@ -83,6 +84,18 @@ public class Abonat implements Serializable{
         return true;
 
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.numar);
+        hash = 47 * hash + Objects.hashCode(this.nume);
+        hash = 47 * hash + Objects.hashCode(this.prenume);
+        hash = 47 * hash + Objects.hashCode(this.CNP);
+        hash = 47 * hash + Objects.hashCode(this.nrTelefon);
+        return hash;
+    }
+
     
     
     
