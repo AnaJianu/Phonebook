@@ -24,6 +24,7 @@ public class PanouButoane extends JPanel {
     private final JButton butonModificare;
     private final JButton butonCautare;
     private final JButton butonIesire;
+    private final JButton butonSortare;
     private final CarteDeTelefonController controller;
 
     public PanouButoane(CarteDeTelefonController controller) {
@@ -35,6 +36,7 @@ public class PanouButoane extends JPanel {
         butonModificare = new JButton("Modificare");
         butonCautare = new JButton("Cautare");
         butonIesire = new JButton("Iesire");
+        butonSortare=new JButton("Sortare");
         initializare();
     }
 
@@ -44,12 +46,14 @@ public class PanouButoane extends JPanel {
         initializareButonAdaugare();
         initializareButonCautare();
         initializareButonModificare();
+        initializareButonSortare();
 
         add(butonAdaugare);
         add(butonStergere);
         add(butonModificare);
         add(butonCautare);
         add(butonIesire);
+        add(butonSortare);
 
         setLayout(new GridLayout(3, 2));
 
@@ -118,6 +122,15 @@ public class PanouButoane extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 controller.modificaAbonat();
 
+            }
+        });
+    }
+    private void initializareButonSortare() {
+        butonSortare.setToolTipText("Sortare lista abonati");
+        butonSortare.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.sortareAbonati();
             }
         });
     }

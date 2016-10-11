@@ -7,19 +7,8 @@ package ro.anajianu.agendatelefonica.view;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.DateTimeParseException;
-import java.time.temporal.ChronoField;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -134,7 +123,6 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
         }
 
         if (cnpIntrodus.length() != 13 && (!cnpIntrodus.startsWith("1") || !cnpIntrodus.startsWith("2"))) {
-            System.out.print(cnpIntrodus.length());
             JOptionPane.showMessageDialog(null, "Introduceti CNP-ul corect!", "Atentie!", JOptionPane.WARNING_MESSAGE);
             throw new RuntimeException("CNP invalid!");
         }

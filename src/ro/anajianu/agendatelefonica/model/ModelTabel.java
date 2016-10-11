@@ -66,6 +66,16 @@ public class ModelTabel extends AbstractTableModel{
     public Abonat getAbonatAt(int selectedRow) {
         return listaAbonati.get(selectedRow);
     }
+
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        if (listaAbonati.isEmpty()) {
+            return Object.class;
+        }
+        return getValueAt(0, columnIndex).getClass();
+    }
+    
+    
     
     
     

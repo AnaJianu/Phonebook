@@ -72,4 +72,9 @@ public class CarteDeTelefonController {
         return modelCarte;
     }
 
+    public void sortareAbonati() {
+        viewCarte.sortareAbonatInTabel();
+
+    }
+
 }

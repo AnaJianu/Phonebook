@@ -24,6 +24,8 @@ import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.TableRowSorter;
@@ -32,6 +34,7 @@ import ro.anajianu.agendatelefonica.model.Abonat;
 import ro.anajianu.agendatelefonica.model.CarteDeTelefon;
 import ro.anajianu.agendatelefonica.model.ModelTabel;
 import ro.anajianu.agendatelefonica.model.NrMobil;
+import ro.anajianu.agendatelefonica.model.comparators.ComparatorNume;
 
 /**
  *
@@ -67,7 +70,7 @@ public class PanouStanga extends JPanel {
 
         modelTabel = modelCarte.getModelTabel();
         tabelAbonati.setModel(modelTabel);
-        tabelAbonati.setAutoCreateRowSorter(true);
+//        tabelAbonati.setAutoCreateRowSorter(true);
         filtruTabel = new TableRowSorter<>(modelTabel);
         tabelAbonati.setRowSorter(filtruTabel);
     }
@@ -164,12 +167,12 @@ public class PanouStanga extends JPanel {
         int condition = JComponent.WHEN_IN_FOCUSED_WINDOW;
         InputMap inputMap = tabelAbonati.getInputMap(condition);
         ActionMap actionMap = tabelAbonati.getActionMap();
-        
-        String DELETE="Delete";
-       
+
+        String DELETE = "Delete";
+
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), DELETE);
         actionMap.put(DELETE, new AbstractAction() {
-           
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (controller.getSelectedAbonat() != null) {
@@ -184,6 +187,28 @@ public class PanouStanga extends JPanel {
                 }
             }
         });
+    }
+
+    void sortareAbonat(String criteriu) {
+        int columnIndexToSort = 0;
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+        if (criteriu.equals("Nume")) {
+            columnIndexToSort = 1;
+        }
+        if (criteriu.equals("Prenume")) {
+            columnIndexToSort = 2;
+        }
+        if (criteriu.equals("Telefon")) {
+            columnIndexToSort = 3;
+        }
+        if (criteriu.equals("CNP")) {
+            columnIndexToSort = 4;
+        }
+
+    
+        sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.ASCENDING));
+        filtruTabel.setSortKeys(sortKeys);
+        filtruTabel.sort();
     }
 
 }

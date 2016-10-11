@@ -2,6 +2,7 @@ package ro.anajianu.agendatelefonica.view;
 
 import java.awt.Dimension;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 import ro.anajianu.agendatelefonica.model.Abonat;
 
@@ -44,6 +45,18 @@ public class CarteDeTelefonGUI {
 
     public PanouPrincipal getPanouPrincipal() {
         return panouPrincipal;
+    }
+
+    public void sortareAbonatInTabel() {
+        String[] coloane = {"Nume", "Prenume", "Telefon", "CNP"};
+
+        Object optiuneSelectata = JOptionPane.showInputDialog(null, "Alegeti criteriul de sortare", "Sortare lista", JOptionPane.DEFAULT_OPTION, null, coloane, "Nume");
+        if (optiuneSelectata != null) {
+            String coloanaSelectata = optiuneSelectata.toString();
+            System.out.println(coloanaSelectata);
+            panouPrincipal.getPanouStanga().sortareAbonat(coloanaSelectata);
+        }
+        
     }
     
 
