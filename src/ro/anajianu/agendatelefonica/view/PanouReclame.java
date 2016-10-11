@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 
 /**
  *
@@ -26,10 +27,11 @@ public class PanouReclame extends JPanel {
     private int randomNumber;
     private static final int BANNER_DISPLAY_TIME = 2000;
     private final Random rand = new Random();
-
+    private CarteDeTelefonController controller;
     private Thread mainAdsThread = null;
 
-    public PanouReclame() {
+    public PanouReclame(CarteDeTelefonController controller) {
+        this.controller = controller;
         initializare();
         startRotireReclame();
     }
@@ -87,4 +89,8 @@ public class PanouReclame extends JPanel {
         }
     }
 
+    public void dezactivare() {
+        setVisible(false);
+    }
+    
 }

@@ -142,4 +142,8 @@ public class CarteDeTelefonController {
         
     }
 
+    public void dezactivareReclame() {
+        viewCarte.getPanouPrincipal().getPanouDreapta().getPanouReclame().dezactivare();
+    }
+
 }

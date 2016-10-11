@@ -23,7 +23,7 @@ public class PanouDreapta extends JPanel {
     public PanouDreapta(CarteDeTelefonController controller) {
         panouDetalii = new PanouDetalii(controller);
         panouButoane = new PanouButoane(controller);
-        panouReclame = new PanouReclame();
+        panouReclame = new PanouReclame(controller);
         initializare();
     }
 
@@ -41,6 +41,10 @@ public class PanouDreapta extends JPanel {
 
     public PanouButoane getPanouButoane() {
         return panouButoane;
+    }
+
+    public PanouReclame getPanouReclame() {
+        return panouReclame;
     }
 
 }

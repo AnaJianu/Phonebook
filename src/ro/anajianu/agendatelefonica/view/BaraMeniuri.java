@@ -180,6 +180,7 @@ public class BaraMeniuri extends JMenuBar {
                     submeniuDeschide.setEnabled(isAppRegistered);
                     submeniuSalvare.setEnabled(isAppRegistered);
                     submeniuInregistrare.setEnabled(!isAppRegistered);
+                    controller.dezactivareReclame();
                     JOptionPane.showMessageDialog(null, "Cod corect!",
                             "Operatiune reusita!",
                             JOptionPane.OK_OPTION);
