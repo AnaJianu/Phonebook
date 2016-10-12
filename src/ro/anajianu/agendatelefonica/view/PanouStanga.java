@@ -23,11 +23,17 @@ import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.event.RowSorterEvent;
+import javax.swing.event.RowSorterListener;
 import javax.swing.table.TableRowSorter;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 import ro.anajianu.agendatelefonica.model.Abonat;
 import ro.anajianu.agendatelefonica.model.CarteDeTelefon;
 import ro.anajianu.agendatelefonica.model.ModelTabel;
+import ro.anajianu.agendatelefonica.model.comparators.ComparatorCNP;
+import ro.anajianu.agendatelefonica.model.comparators.ComparatorNume;
+import ro.anajianu.agendatelefonica.model.comparators.ComparatorPrenume;
+import ro.anajianu.agendatelefonica.model.comparators.ComparatorTelefon;
 
 /**
  *
@@ -65,6 +71,7 @@ public class PanouStanga extends JPanel {
         tabelAbonati.setModel(modelTabel);
         filtruTabel = new TableRowSorter<>(modelTabel);
         tabelAbonati.setRowSorter(filtruTabel);
+
     }
 
     private void initializare() {
@@ -182,25 +189,24 @@ public class PanouStanga extends JPanel {
     }
 
     void sortareAbonat(String criteriu) {
-        int columnIndexToSort = 0;
-        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+
         if (criteriu.equals("Nume")) {
-            columnIndexToSort = 1;
+            modelCarte.sortWithComparator(new ComparatorNume());
+            modelTabel.fireTableDataChanged();
         }
         if (criteriu.equals("Prenume")) {
-            columnIndexToSort = 2;
+            modelCarte.sortWithComparator(new ComparatorPrenume());
+            modelTabel.fireTableDataChanged();
         }
         if (criteriu.equals("Telefon")) {
-            columnIndexToSort = 3;
+            modelCarte.sortWithComparator(new ComparatorTelefon());
+            modelTabel.fireTableDataChanged();            
         }
         if (criteriu.equals("CNP")) {
-            columnIndexToSort = 4;
+            modelCarte.sortWithComparator(new ComparatorCNP());
+            modelTabel.fireTableDataChanged();
         }
 
-    
-        sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.ASCENDING));
-        filtruTabel.setSortKeys(sortKeys);
-        filtruTabel.sort();
     }
 
 }
