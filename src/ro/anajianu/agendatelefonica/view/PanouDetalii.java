@@ -97,14 +97,7 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
         String nrTelefonIntrodus = telefonAbonatValoare.getText();
         NrTelefon nrTelefon;
 
-        if (nrTelefonIntrodus.length() == 10 && (nrTelefonIntrodus.startsWith("02") || nrTelefonIntrodus.startsWith("03"))) {
-            nrTelefon = new NrFix(nrTelefonIntrodus);
-        } else if (nrTelefonIntrodus.length() == 10 && nrTelefonIntrodus.startsWith("07")) {
-            nrTelefon = new NrMobil(nrTelefonIntrodus);
-        } else {
-            JOptionPane.showMessageDialog(null, "Numar invalid!", "Atentie!", JOptionPane.WARNING_MESSAGE);
-            throw new RuntimeException("Numar invalid!");
-        }
+        nrTelefon = creareTelefonDin(nrTelefonIntrodus);
         int nrAbonati = controller.getListaAbonati().size();
         String idCurent = Integer.toString(nrAbonati);
 
@@ -138,6 +131,19 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
 
     }
 
+    private NrTelefon creareTelefonDin(String nrTelefonIntrodus) throws RuntimeException {
+        NrTelefon nrTelefon = null;
+        if (nrTelefonIntrodus.length() == 10 && (nrTelefonIntrodus.startsWith("02") || nrTelefonIntrodus.startsWith("03"))) {
+            nrTelefon = new NrFix(nrTelefonIntrodus);
+        } else if (nrTelefonIntrodus.length() == 10 && nrTelefonIntrodus.startsWith("07")) {
+            nrTelefon = new NrMobil(nrTelefonIntrodus);
+        } else {
+            JOptionPane.showMessageDialog(null, "Numar invalid!", "Atentie!", JOptionPane.WARNING_MESSAGE);
+            throw new RuntimeException("Numar invalid!");
+        }
+        return nrTelefon;
+    }
+
     @Override
     public void valueChanged(ListSelectionEvent e) {
         Abonat selectedAbonat = controller.getSelectedAbonat();
@@ -156,8 +162,8 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
     }
 
     public Abonat getAbonatAfisat() {
-        NrTelefon nrDeModificat = new NrMobil(telefonAbonatValoare.getText());
-        String numar = "2";
+        NrTelefon nrDeModificat = creareTelefonDin(telefonAbonatValoare.getText());
+        String numar = "SCHIMBAT_LA_MODIFICARE";
         String numeModificat = numeAbonat.getText();
         String prenumeModificat = prenumeAbonat.getText();
         String cnpModificat = cnpAbonatValoare.getText();
