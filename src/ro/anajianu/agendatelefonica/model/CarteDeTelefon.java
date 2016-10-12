@@ -1,10 +1,7 @@
 package ro.anajianu.agendatelefonica.model;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
-import ro.anajianu.agendatelefonica.model.comparators.ComparatorNume;
 
 
 public class CarteDeTelefon {
@@ -64,9 +61,8 @@ public class CarteDeTelefon {
     public String toString() {
         return abonati.toString();
     }
-
-    public void sortWithComparator(Comparator<Abonat> comparator) {
-        Collections.sort(abonati, comparator);
-    }
+    
+    
+    
     
 }
