@@ -31,6 +31,7 @@ public class CarteDeTelefonGUI {
     
     public void stergeCampuriDetaliiAbonat() {
         panouPrincipal.getPanouDreapta().getPanouDetalii().stergeCampuriDetaliiAbonat();
+        
     }
 
     public void adaugaAbonatDinView() {

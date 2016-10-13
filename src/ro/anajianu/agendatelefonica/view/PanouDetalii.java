@@ -95,6 +95,7 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
         prenumeAbonat.setText("");
         telefonAbonatValoare.setText("");
         cnpAbonatValoare.setText("");
+        pozaAbonat.setText("  ");
     }
 
     /**
