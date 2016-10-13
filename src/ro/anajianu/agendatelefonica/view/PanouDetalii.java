@@ -1,14 +1,15 @@
 package ro.anajianu.agendatelefonica.view;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
@@ -26,7 +27,6 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
     private final CarteDeTelefonController controller;
 
     private final JLabel pozaAbonat;
-    private final ImageIcon iconAbonat;
     private final JTextField numeAbonat;
     private final JTextField prenumeAbonat;
     private final JLabel telefonAbonatEticheta;
@@ -36,14 +36,21 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
 
     public PanouDetalii(CarteDeTelefonController controller) {
         this.controller = controller;
-        iconAbonat = new ImageIcon("resources/emptyPhoto.png");
-        pozaAbonat = new JLabel(iconAbonat);
+        pozaAbonat = new JLabel("NP", SwingConstants.CENTER);
+        pozaAbonat.setForeground(Color.BLACK);
+        pozaAbonat.setBackground(Color.ORANGE);
+        pozaAbonat.setOpaque(true);
         numeAbonat = new JTextField("Nume");
+        numeAbonat.setColumns(120);
         prenumeAbonat = new JTextField("Prenume");
+        prenumeAbonat.setColumns(120);
+       
         telefonAbonatEticheta = new JLabel("Telefon:");
         telefonAbonatValoare = new JTextField();
+        telefonAbonatValoare.setColumns(60);
         cnpAbonatEticheta = new JLabel("CNP:");
         cnpAbonatValoare = new JTextField();
+        cnpAbonatValoare.setColumns(80);
         initializare();
     }
 
@@ -51,38 +58,35 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
+        
         gbc.gridx = 0;
         gbc.gridy = 0;
+        gbc.weightx = 1.0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         add(pozaAbonat, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 0;
-        gbc.ipadx = 100;
         add(numeAbonat, gbc);
 
         gbc.gridx = 2;
         gbc.gridy = 0;
-        gbc.ipadx = 100;
         add(prenumeAbonat, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 1;
-        gbc.ipadx = 0;
         add(telefonAbonatEticheta, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 1;
-        gbc.ipadx = 200;
         add(telefonAbonatValoare, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 2;
-        gbc.ipadx = 0;
         add(cnpAbonatEticheta, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 2;
-        gbc.ipadx = 200;
         add(cnpAbonatValoare, gbc);
     }
 
@@ -168,6 +172,7 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
             prenumeAbonat.setText(selectedAbonat.getPrenume());
             telefonAbonatValoare.setText(selectedAbonat.getNumarTelefon().toString());
             cnpAbonatValoare.setText(selectedAbonat.getCNP());
+            pozaAbonat.setText(selectedAbonat.getNume().substring(0, 1)+selectedAbonat.getPrenume().substring(0, 1));
         }
 
     }
