@@ -5,7 +5,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
@@ -19,12 +18,9 @@ import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
-import javax.swing.RowSorter;
-import javax.swing.SortOrder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.event.RowSorterEvent;
-import javax.swing.event.RowSorterListener;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 import ro.anajianu.agendatelefonica.controller.CarteDeTelefonController;
 import ro.anajianu.agendatelefonica.model.Abonat;
@@ -71,7 +67,9 @@ public class PanouStanga extends JPanel {
         tabelAbonati.setModel(modelTabel);
         filtruTabel = new TableRowSorter<>(modelTabel);
         tabelAbonati.setRowSorter(filtruTabel);
-
+        tabelAbonati.getTableHeader().setEnabled(false);
+        TableColumn columnID = tabelAbonati.getColumnModel().getColumn(0);
+        columnID.setPreferredWidth(20);
     }
 
     private void initializare() {
