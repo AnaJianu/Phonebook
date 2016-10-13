@@ -93,6 +93,22 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
         cnpAbonatValoare.setText("");
     }
 
+    /**
+     * Preia textul din panoul de detalii si valideaza informatiile introduse
+     * de utilizator.
+     * Afiseaza o fereastra in cazul in urmatoarele cazuri:
+     * - Numele si Prenumele lipsesc;
+     * - CNP-ul are lungimea incorecta sau nu incepe cu cifrele 1/2. Pe langa
+     * aceasta verificare, este validata si data nasterii din CNP.
+     * In cazul in care data nasterii este incorecta, utilizatorul este
+     * notificat si arunca o exceptie de tipul {@link RuntimeException}.
+     * - Telefonul are lungime incorecta si nu incepe cu 07 (mobil) sau 02/03
+     * (fix).
+     * 
+     *
+     * @return Abonat care a fost initializat din informatiile introduse de
+     * utilizator.
+     */
     public Abonat getAbonatDeAdaugat() {
         String nrTelefonIntrodus = telefonAbonatValoare.getText();
         NrTelefon nrTelefon;
