@@ -101,12 +101,13 @@ public class PanouDetalii extends JPanel implements ListSelectionListener {
     /**
      * Preia textul din panoul de detalii si valideaza informatiile introduse
      * de utilizator.
-     * Afiseaza o fereastra in cazul in urmatoarele cazuri:
-     * - Numele si Prenumele lipsesc;
+     * 
+     * Afiseaza o fereastra in cazul in urmatoarele cazuri:<br>
+     * - Numele si Prenumele lipsesc;<br>
      * - CNP-ul are lungimea incorecta sau nu incepe cu cifrele 1/2. Pe langa
      * aceasta verificare, este validata si data nasterii din CNP.
      * In cazul in care data nasterii este incorecta, utilizatorul este
-     * notificat si arunca o exceptie de tipul {@link RuntimeException}.
+     * notificat si arunca o exceptie de tipul {@link RuntimeException}.<br>
      * - Telefonul are lungime incorecta si nu incepe cu 07 (mobil) sau 02/03
      * (fix).
      * 
