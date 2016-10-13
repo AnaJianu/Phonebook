@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
-import ro.anajianu.agendatelefonica.model.comparators.ComparatorNume;
 
 
 public class CarteDeTelefon {

@@ -37,7 +37,9 @@ public class BaraMeniuri extends JMenuBar {
 
     private final JMenu meniuAjutor;
     private final JMenuItem submeniuInregistrare;
+    private final JSeparator separatorMeniuAjutor;
     private final JMenuItem submeniuDespre;
+    
 
     private final CarteDeTelefonController controller;
 
@@ -58,6 +60,7 @@ public class BaraMeniuri extends JMenuBar {
 
         meniuAjutor = new JMenu("Ajutor");
         submeniuInregistrare = new JMenuItem("Inregistrare");
+        separatorMeniuAjutor= new JSeparator();
         submeniuDespre = new JMenuItem("Despre");
         initializare();
         initializareSubmeniuIesire();
@@ -68,6 +71,7 @@ public class BaraMeniuri extends JMenuBar {
         initializareSubmeniuInregistrare();
         initializareSubmeniuDespre();
         initializareSubmeniuModificare();
+        initializareSubmeniuAdaugare();
     }
 
     private void initializare() {
@@ -86,6 +90,7 @@ public class BaraMeniuri extends JMenuBar {
         add(meniuAbonati);
 
         meniuAjutor.add(submeniuInregistrare);
+        meniuAjutor.add(separatorMeniuAjutor);
         meniuAjutor.add(submeniuDespre);
         meniuAjutor.setMnemonic(KeyEvent.VK_U);
         add(meniuAjutor);
@@ -222,6 +227,16 @@ public class BaraMeniuri extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.modificaAbonat();
+            }
+        });
+    }
+
+    private void initializareSubmeniuAdaugare() {
+        submeniuAdaugaAbonat.setMnemonic(KeyEvent.VK_A);
+        submeniuAdaugaAbonat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.adaugaAbonat();
             }
         });
     }

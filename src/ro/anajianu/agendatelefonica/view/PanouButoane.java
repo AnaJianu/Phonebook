@@ -31,7 +31,7 @@ public class PanouButoane extends JPanel {
         butonModificare = new JButton("Modificare");
         butonCautare = new JButton("Cautare");
         butonIesire = new JButton("Iesire");
-        butonSortare=new JButton("Sortare");
+        butonSortare = new JButton("Sortare");
         initializare();
     }
 
@@ -59,16 +59,7 @@ public class PanouButoane extends JPanel {
         butonStergere.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (controller.getSelectedAbonat() != null) {
-                    int n = JOptionPane.showConfirmDialog(null, "Confirmati stergerea abonatului?", "Confirmare stergere", JOptionPane.YES_NO_OPTION);
-                    if (n == 0) {
-                        controller.stergeAbonat();
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Va rugam selectati un abonat!",
-                            "Stergere abonat",
-                            JOptionPane.OK_OPTION);
-                }
+                controller.stergeAbonat();
             }
         });
     }
@@ -120,6 +111,7 @@ public class PanouButoane extends JPanel {
             }
         });
     }
+
     private void initializareButonSortare() {
         butonSortare.setToolTipText("Sortare lista abonati");
         butonSortare.addActionListener(new ActionListener() {

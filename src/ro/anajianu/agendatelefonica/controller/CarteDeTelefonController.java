@@ -35,7 +35,7 @@ public class CarteDeTelefonController {
         incarcaDateleLaPornireaAplicatiei();
 
     }
-    
+
     public void initializareView() {
         viewCarte.initializare();
     }
@@ -46,8 +46,17 @@ public class CarteDeTelefonController {
     }
 
     public void stergeAbonat() {
-        viewCarte.stergeAbonatDinTabel();
-        viewCarte.stergeCampuriDetaliiAbonat();
+        if (getSelectedAbonat() != null) {
+            int n = JOptionPane.showConfirmDialog(null, "Confirmati stergerea abonatului?", "Confirmare stergere", JOptionPane.YES_NO_OPTION);
+            if (n == 0) {
+                viewCarte.stergeAbonatDinTabel();
+                viewCarte.stergeCampuriDetaliiAbonat();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Va rugam selectati un abonat!",
+                    "Stergere abonat",
+                    JOptionPane.OK_OPTION);
+        }
 
     }
 
@@ -132,14 +141,12 @@ public class CarteDeTelefonController {
         }
 
     }
-    
+
     private void programeazaSalvareBazeiDeDate(File file) {
         TimerTask salvator = new ThreadSalvareBazaDate(this, file);
         Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(salvator, 0, 300*1000);
-        
+        timer.scheduleAtFixedRate(salvator, 0, 300 * 1000);
 
-        
     }
 
     public void dezactivareReclame() {
